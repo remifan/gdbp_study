@@ -73,7 +73,6 @@ def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=100):
                                     sr=sr,
                                     bw=bw),
                      ax=ax)
-    ax.legend().set_visible(False)
     ax.set_xlabel('freq. (GHz)')
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
 
