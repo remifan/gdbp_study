@@ -1,7 +1,9 @@
 #
 local
 pretrained
+notebooks
 dataset
+*.zip
 
 # vim
 .vim
