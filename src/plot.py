@@ -23,8 +23,14 @@ def wireframe_cmap(ax, X, Y, Z, cmap=plt.cm.viridis, offset=[0, 0], label=""):
                            facecolors=colors,
                            shade=False,
                            label=label)
-    surf._facecolors2d = surf._facecolor3d
-    surf._edgecolors2d = surf._edgecolor3d
+    try:
+      # matplotlib >= 3.3.3
+      surf._facecolors2d = surf._facecolor3d
+      surf._edgecolors2d = surf._edgecolor3d
+    except AttributeError:
+      surf._facecolors2d = surf._facecolors3d
+      surf._edgecolors2d = surf._edgecolors3d
+    surf.set_facecolor((0, 0, 0, 0))
     surf.set_facecolor((0, 0, 0, 0))
 
 
