@@ -5,7 +5,7 @@ from commplax.module import core, layer
 import numpy as np
 from functools import partial
 from collections import namedtuple
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from typing import Any, Optional, Union
 from src import dataloader as dl
 

@@ -4,6 +4,7 @@ pretrained
 notebooks
 dataset
 *.zip
+*.ipynb
 
 # vim
 .vim
