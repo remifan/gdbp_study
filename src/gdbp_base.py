@@ -73,8 +73,8 @@ def make_base_model(steps: int = 3,
 def _assert_taps(dtaps, ntaps, rtaps, sps=2):
     ''' we force odd taps to ease coding '''
     assert dtaps % sps, f'dtaps must be odd number, got {dtaps} instead'
-    assert ntaps % sps, f'dtaps must be odd number, got {ntaps} instead'
-    assert rtaps % sps, f'dtaps must be odd number, got {rtaps} instead'
+    assert ntaps % sps, f'ntaps must be odd number, got {ntaps} instead'
+    assert rtaps % sps, f'rtaps must be odd number, got {rtaps} instead'
 
 
 def fdbp_init(a: dict,
