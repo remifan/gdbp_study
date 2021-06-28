@@ -39,6 +39,8 @@ def make_base_model(steps: int = 3,
         A layer object
     '''
 
+    _assert_taps(dtaps, ntaps, rtaps)
+
     d_init, n_init = init_fn
 
     if mode == 'train':
@@ -66,6 +68,13 @@ def make_base_model(steps: int = 3,
         layer.vmap(layer.Conv1d)(name='RConv', taps=rtaps),  # vectorize column-wise Conv1D
         layer.MIMOAF(train=mimo_train))  # adaptive MIMO layer
     return base
+
+
+def _assert_taps(dtaps, ntaps, rtaps, sps=2):
+    ''' we force odd taps to ease coding '''
+    assert dtaps % sps, f'dtaps must be odd number, got {dtaps} instead'
+    assert ntaps % sps, f'dtaps must be odd number, got {ntaps} instead'
+    assert rtaps % sps, f'dtaps must be odd number, got {rtaps} instead'
 
 
 def fdbp_init(a: dict,
