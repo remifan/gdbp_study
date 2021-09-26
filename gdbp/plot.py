@@ -12,6 +12,7 @@ def lp_vs_q(lp, q, ax=None, **kwargs):
     ax.legend()
     ax.set_xlabel('Launched Power (dBm)')
     ax.set_ylabel('Q-facotr (dB)')
+    # px.line(q_ch1, width=800, height=600, markers=True, template='plotly_white')
 
 
 def wireframe_cmap(ax, X, Y, Z, cmap=plt.cm.viridis, offset=[0, 0], label=""):
@@ -46,7 +47,7 @@ def loss(loss, ax=None, label=None, alpha=0.4):
     ax.legend()
 
 
-def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=100):
+def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=200):
     if vertical:
         fig, axs = plt.subplots(3, 1, figsize=(4, 8), dpi=dpi)
     else:
@@ -55,6 +56,7 @@ def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=100):
         [params[-5]['fdbp_0']['DConv_%d' % i]['kernel'] for i in range(3)])
     param_N = np.stack(
         [params[-5]['fdbp_0']['NConv_%d' % i]['kernel'] for i in range(3)])
+    param_R = params[-5]['RConv']['kernel']
 
     ax = axs[0]
     cplt.desc_filter(*comm.firfreqz(param_D[:, :, 0], sr=sr, bw=bw),
@@ -75,7 +77,7 @@ def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=100):
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
 
     ax = axs[2]
-    cplt.desc_filter(*comm.firfreqz(params[-5]['RConv']['kernel'][:, 0],
+    cplt.desc_filter(*comm.firfreqz(param_R[:, 0],
                                     sr=sr,
                                     bw=bw),
                      ax=ax)
@@ -83,5 +85,6 @@ def gdbp_params(params, vertical=False, sr=72, bw=60, dpi=100):
     ax.yaxis.set_major_formatter(FormatStrFormatter('%.2f'))
 
     fig.tight_layout()
+    return fig
 
 

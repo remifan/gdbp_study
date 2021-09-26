@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: overview
+parts:
+  - caption: Article
+    chapters:
+    - file: article
+  - caption: Source Codes
+    chapters:
+    - file: notebooks/training_loss
+    - file: notebooks/time_varying_states
+    - file: notebooks/benchmark
+    - file: notebooks/learned_params
+    - file: notebooks/benchmark_few_taps
+  - caption: Appendix
+    chapters:
+    - file: notebooks/bp_conv1d
+    - file: notebooks/complex_optim

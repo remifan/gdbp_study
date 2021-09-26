@@ -1,29 +1,29 @@
 from jax import numpy as jnp, random, jit, value_and_grad
 import flax
-from commplax import util, comm, cxopt, op
+from commplax import util, comm, cxopt, op, optim
 from commplax.module import core, layer
 import numpy as np
 from functools import partial
 from collections import namedtuple
 from tqdm.auto import tqdm
 from typing import Any, Optional, Union
-from src import dataloader as dl
+from . import data as gdat
 
 
-Model = namedtuple('Model', 'model initvar overlaps')
+Model = namedtuple('Model', 'module initvar overlaps name')
 Array = Any
 Dict = Union[dict, flax.core.FrozenDict]
 
 
-def make_base_model(steps: int = 3,
-                    dtaps: int = 261,
-                    ntaps: int = 41,
-                    rtaps: int = 61,
-                    init_fn: tuple = (core.delta, core.gauss),
-                    w0 = 0.,
-                    mode: str = 'train'):
+def make_base_module(steps: int = 3,
+                     dtaps: int = 261,
+                     ntaps: int = 41,
+                     rtaps: int = 61,
+                     init_fn: tuple = (core.delta, core.gauss),
+                     w0 = 0.,
+                     mode: str = 'train'):
     '''
-    make base model that derives DBP, FDBP, EDBP, GDBP depending on
+    make base module that derives DBP, FDBP, EDBP, GDBP depending on
     specific initialization method and trainable parameters defined
     by trainer.
 
@@ -52,7 +52,7 @@ def make_base_model(steps: int = 3,
         mimo_train = cxopt.piecewise_constant([200000], [True, False])
     else:
         raise ValueError('invalid mode %s' % mode)
-
+        
     base = layer.Serial(
         layer.FDBP(steps=steps,
                    dtaps=dtaps,
@@ -67,6 +67,7 @@ def make_base_model(steps: int = 3,
                         foekwargs={}),
         layer.vmap(layer.Conv1d)(name='RConv', taps=rtaps),  # vectorize column-wise Conv1D
         layer.MIMOAF(train=mimo_train))  # adaptive MIMO layer
+        
     return base
 
 
@@ -81,7 +82,7 @@ def fdbp_init(a: dict,
               xi: float = 1.1,
               steps: Optional[int] = None):
     '''
-        initializer for the base model
+        initializer for the base module
 
         Args:
             xi: NLC scaling factor
@@ -117,19 +118,20 @@ def fdbp_init(a: dict,
     return d_init, n_init
 
 
-def model_init(data: dl.Dataset,
+def model_init(data: gdat.Input,
                base_conf: dict,
                sparams_flatkeys: list,
-               n_symbols: int = 2000,
-               sps : int = 2):
+               n_symbols: int = 4000,
+               sps : int = 2,
+               name='Model'):
     ''' initialize model from base template, generating CDC, DBP, EDBP, FDBP, GDBP
     depending on given N-filter length and trainable parameters
 
     Args:
         data:
-        base_conf: a dict of kwargs to make base model, see `make_base_model`
+        base_conf: a dict of kwargs to make base module, see `make_base_module`
         sparams_flatkeys: a list of keys contains the static(nontrainable) parameters.
-            For example, assume base model has parameters represented as nested dict
+            For example, assume base module has parameters represented as nested dict
             {'color': 'red', 'size': {'width': 1, 'height': 2}}, its flatten layout is dict
              {('color',): 'red', ('size', 'width',): 1, ('size', 'height'): 2}, a sparams_flatkeys
              of [('color',): ('size', 'width',)] means 'color' and 'size/width' parameters are static.
@@ -141,20 +143,20 @@ def model_init(data: dl.Dataset,
     Returns:
         a initialized model wrapped by a namedtuple
     '''
-
-    model = make_base_model(**base_conf, w0=data.w0)
+    
+    mod = make_base_module(**base_conf, w0=data.w0)
     y0 = data.y[:n_symbols * sps]
     rng0 = random.PRNGKey(0)
-    z0, v0 = model.init(rng0, core.Signal(y0))
+    z0, v0 = mod.init(rng0, core.Signal(y0))
     ol = z0.t.start - z0.t.stop
     sparams, params = util.dict_split(v0['params'], sparams_flatkeys)
     state = v0['af_state']
     aux = v0['aux_inputs']
     const = v0['const']
-    return Model(model, (params, state, aux, const, sparams), ol)
+    return Model(mod, (params, state, aux, const, sparams), ol, name)
 
 
-def loss_fn(model: layer.Layer,
+def loss_fn(module: layer.Layer,
             params: Dict,
             state: Dict,
             y: Array,
@@ -165,9 +167,9 @@ def loss_fn(model: layer.Layer,
     ''' loss function
 
         Args:
-            model: model returned by `model_init`
+            module: module returned by `model_init`
             params: trainable parameters
-            state: model state
+            state: module state
             y: transmitted waveforms
             x: aligned sent symbols
             aux: auxiliary input
@@ -175,11 +177,11 @@ def loss_fn(model: layer.Layer,
             sparams: static parameters
 
         Return:
-            loss, updated model state
+            loss, updated module state
     '''
 
     params = util.dict_merge(params, sparams)
-    z, updated_state = model.apply(
+    z, updated_state = module.apply(
         {
             'params': params,
             'aux_inputs': aux,
@@ -191,11 +193,11 @@ def loss_fn(model: layer.Layer,
 
 
 @partial(jit, backend='cpu', static_argnums=(0, 1))
-def update_step(model: layer.Layer,
+def update_step(module: layer.Layer,
                 opt: cxopt.Optimizer,
                 i: int,
                 opt_state: tuple,
-                model_state: Dict,
+                module_state: Dict,
                 y: Array,
                 x: Array,
                 aux: Dict,
@@ -208,7 +210,7 @@ def update_step(model: layer.Layer,
             opt: optimizer
             i: iteration counter
             opt_state: optimizer state
-            model_state: model state
+            module_state: module state
             y: transmitted waveforms
             x: aligned sent symbols
             aux: auxiliary input
@@ -216,18 +218,18 @@ def update_step(model: layer.Layer,
             sparams: static parameters
 
         Return:
-            loss, updated model state
+            loss, updated module state
     '''
 
     params = opt.params_fn(opt_state)
-    (loss, model_state), grads = value_and_grad(
-        loss_fn, argnums=1, has_aux=True)(model, params, model_state, y, x,
+    (loss, module_state), grads = value_and_grad(
+        loss_fn, argnums=1, has_aux=True)(module, params, module_state, y, x,
                                           aux, const, sparams)
     opt_state = opt.update_fn(i, grads, opt_state)
-    return loss, opt_state, model_state
+    return loss, opt_state, module_state
 
 
-def get_train_batch(ds: dl.Dataset,
+def get_train_batch(ds: gdat.Input,
                     batchsize: int,
                     overlaps: int,
                     sps: int = 2):
@@ -253,10 +255,10 @@ def get_train_batch(ds: dl.Dataset,
 
 
 def train(model: Model,
-          data: dl.Dataset,
+          data: gdat.Input,
           batch_size: int = 500,
-          n_iter=None,
-          opt: cxopt.Optimizer = cxopt.adam(cxopt.piecewise_constant([500, 1000], [1e-4, 1e-5, 1e-6]))):
+          n_iter = None,
+          opt: optim.Optimizer = optim.adam(optim.piecewise_constant([500, 1000], [1e-4, 1e-5, 1e-6]))):
     ''' training process (1 epoch)
 
         Args:
@@ -266,10 +268,10 @@ def train(model: Model,
             opt: optimizer
 
         Returns:
-            yield loss, trained parameters, model state
+            yield loss, trained parameters, module state
     '''
 
-    params, model_state, aux, const, sparams = model.initvar
+    params, module_state, aux, const, sparams = model.initvar
     opt_state = opt.init_fn(params)
 
     n_batch, batch_gen = get_train_batch(data, batch_size, model.overlaps)
@@ -279,15 +281,15 @@ def train(model: Model,
                              total=n_iter, desc='training', leave=False):
         if i >= n_iter: break
         aux = core.dict_replace(aux, {'truth': x})
-        loss, opt_state, model_state = update_step(model.model, opt, i, opt_state,
-                                                   model_state, y, x, aux,
+        loss, opt_state, module_state = update_step(model.module, opt, i, opt_state,
+                                                   module_state, y, x, aux,
                                                    const, sparams)
-        yield loss, opt.params_fn(opt_state), model_state
+        yield loss, opt.params_fn(opt_state), module_state
 
 
 def test(model: Model,
          params: Dict,
-         data: dl.Dataset,
+         data: gdat.Input,
          eval_range: tuple=(300000, -20000),
          metric_fn=comm.qamqot):
     ''' testing, a simple forward pass
@@ -305,8 +307,10 @@ def test(model: Model,
 
     state, aux, const, sparams = model.initvar[1:]
     aux = core.dict_replace(aux, {'truth': data.x})
+    if params is None:
+      params = model.initvar[0]
 
-    z, _ = jit(model.model.apply,
+    z, _ = jit(model.module.apply,
                backend='cpu')({
                    'params': util.dict_merge(params, sparams),
                    'aux_inputs': aux,
