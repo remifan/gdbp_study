@@ -2,6 +2,7 @@
 local
 pretrained
 dataset
+#docs/notebooks/*.yaml
 *.zip
 
 # vim
