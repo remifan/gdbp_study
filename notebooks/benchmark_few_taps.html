@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performance penalty by using fewer taps &#8212; Homepage</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BP of Conv1D" href="bp_conv1d.html" />
+    <link rel="prev" title="Learned params" href="learned_params.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Homepage</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Article
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../article.html">
+   Combined neural network and adaptive DSP training for long-haul optical communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Source Codes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="training_loss.html">
+   Training loss
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_varying_states.html">
+   Time varying effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmark.html">
+   Benchmark
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="learned_params.html">
+   Learned params
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Performance penalty by using fewer taps
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bp_conv1d.html">
+   BP of Conv1D
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="complex_optim.html">
+   Complex-valued optimizer
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/benchmark_few_taps.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/remifan/gdbp_study"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/remifan/gdbp_study/issues/new?title=Issue%20on%20page%20%2Fnotebooks/benchmark_few_taps.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/remifan/gdbp_study/blob/master/docs/notebooks/benchmark_few_taps.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="performance-penalty-by-using-fewer-taps">
+<h1>Performance penalty by using fewer taps<a class="headerlink" href="#performance-penalty-by-using-fewer-taps" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">commplax</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">gdbp</span> <span class="kn">import</span> <span class="n">gdbp_base</span> <span class="k">as</span> <span class="n">gb</span><span class="p">,</span> <span class="n">data</span> <span class="k">as</span> <span class="n">gdat</span><span class="p">,</span> <span class="n">plot</span> <span class="k">as</span> <span class="n">gplt</span><span class="p">,</span> <span class="n">aux</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_train</span><span class="p">,</span> <span class="n">ds_test</span> <span class="o">=</span> <span class="n">gdat</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gdat</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span><span class="o">.</span><span class="n">dl_trained_params</span><span class="p">()</span> <span class="c1"># download pre-trained parameters</span>
+<span class="n">loc_trained_params</span> <span class="o">=</span> <span class="s1">&#39;./trained_params/pretrained&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% [..........................................................................] 1582928 / 1582928
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use Pandas.Dataframe to store the results</span>
+<span class="n">df_test_res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">c</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;ntaps&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
+                                                               <span class="s1">&#39;dtaps&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
+                                                               <span class="s1">&#39;xi&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span>
+                                                               <span class="s1">&#39;Model&#39;</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span><span class="p">,</span>
+                                                               <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init_models</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">hparams</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">):</span>
+  <span class="n">model_conf</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mode&#39;</span><span class="p">:</span>  <span class="n">mode</span><span class="p">,</span>
+                <span class="s1">&#39;dtaps&#39;</span><span class="p">:</span> <span class="n">hparams</span><span class="p">[</span><span class="s1">&#39;dtaps&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;ntaps&#39;</span><span class="p">:</span> <span class="n">hparams</span><span class="p">[</span><span class="s1">&#39;ntaps&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;init_fn&#39;</span><span class="p">:</span> <span class="n">gb</span><span class="o">.</span><span class="n">fdbp_init</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">xi</span><span class="o">=</span><span class="n">hparams</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">])}</span>
+  <span class="n">model_init</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">gb</span><span class="o">.</span><span class="n">model_init</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">model_conf</span><span class="p">)</span>
+  <span class="n">fdbp</span> <span class="o">=</span> <span class="n">model_init</span><span class="p">([(</span><span class="s1">&#39;fdbp_0&#39;</span><span class="p">,)]</span>            <span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;FDBP&#39;</span><span class="p">)</span>
+  <span class="n">edbp</span> <span class="o">=</span> <span class="n">model_init</span><span class="p">([(</span><span class="s1">&#39;fdbp_0&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;DConv_\d&#39;</span><span class="p">)],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;EDBP&#39;</span><span class="p">)</span>
+  <span class="n">gdbp</span> <span class="o">=</span> <span class="n">model_init</span><span class="p">([],</span>                        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;GDBP&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">fdbp</span><span class="p">,</span> <span class="n">edbp</span><span class="p">,</span> <span class="n">gdbp</span>
+
+
+<span class="k">def</span> <span class="nf">sweep_hparams</span><span class="p">(</span><span class="n">hparams</span><span class="p">,</span> <span class="n">df_test_res</span><span class="o">=</span><span class="n">df_test_res</span><span class="p">,</span> <span class="n">use_pretrained_params</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_params</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">hp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">hparams</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;sweeping hparams&#39;</span><span class="p">)):</span>  <span class="c1"># iterate hparams</span>
+    <span class="n">models_train</span> <span class="o">=</span> <span class="n">init_models</span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">hp</span><span class="p">)</span>
+    <span class="n">models_test</span> <span class="o">=</span> <span class="n">init_models</span><span class="p">(</span><span class="n">ds_test</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">model_train</span><span class="p">,</span> <span class="n">model_test</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">models_train</span><span class="p">,</span> <span class="n">models_test</span><span class="p">),</span>
+                                                       <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">models_train</span><span class="p">),</span>
+                                                       <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;iterating models&#39;</span><span class="p">,</span>
+                                                       <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">)):</span>  <span class="c1"># iterate models</span>
+      <span class="n">params_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">loc_trained_params</span><span class="p">,</span>
+                                 <span class="s1">&#39;snr_vs_dtaps_ntaps&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;params_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span> <span class="c1"># params_{hparam}_{model}</span>
+      
+      <span class="k">if</span> <span class="n">use_pretrained_params</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">load_variable</span><span class="p">(</span><span class="n">params_file</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">params_queue</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
+        
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">gb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">model_train</span><span class="p">,</span> <span class="n">ds_train</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+          <span class="n">params_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+          <span class="n">params</span> <span class="o">=</span> <span class="n">params_queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">save_params</span><span class="p">:</span>
+          <span class="n">util</span><span class="o">.</span><span class="n">save_variable</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">params_file</span><span class="p">)</span>
+        
+      <span class="n">test_Q</span> <span class="o">=</span> <span class="n">gb</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">model_test</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">ds_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">QSq</span><span class="o">.</span><span class="n">total</span>
+      <span class="c1"># collect result</span>
+      <span class="n">df_test_res</span> <span class="o">=</span> <span class="n">df_test_res</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;dtaps&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="p">[</span><span class="s1">&#39;dtaps&#39;</span><span class="p">],</span>
+                                        <span class="s1">&#39;ntaps&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="p">[</span><span class="s1">&#39;ntaps&#39;</span><span class="p">],</span>
+                                        <span class="s1">&#39;xi&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="p">[</span><span class="s1">&#39;xi&#39;</span><span class="p">],</span>
+                                        <span class="s1">&#39;Model&#39;</span><span class="p">:</span> <span class="n">model_test</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                        <span class="s1">&#39;Q&#39;</span><span class="p">:</span> <span class="n">test_Q</span><span class="p">},</span>
+                                       <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">util</span><span class="o">.</span><span class="n">clear_xla_cache</span><span class="p">()</span> <span class="c1"># clear compile cache periodically to save RAM</span>
+
+  <span class="k">return</span> <span class="n">df_test_res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make sweeping grid</span>
+
+<span class="c1"># caveats: taps must be odd number</span>
+<span class="n">NTAPS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">DTAPS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">181</span><span class="p">,</span> <span class="mi">261</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">OPTXI</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../source_data/fdbp_opt_xi_ntaps.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># read optimal xi given dtaps</span>
+
+<span class="n">hparams</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ntaps</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">NTAPS</span><span class="p">,</span> <span class="n">OPTXI</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">dtaps</span> <span class="ow">in</span> <span class="n">DTAPS</span><span class="p">:</span>
+    <span class="n">hparams</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ntaps&#39;</span><span class="p">:</span> <span class="n">ntaps</span><span class="p">,</span> <span class="s1">&#39;dtaps&#39;</span><span class="p">:</span> <span class="n">dtaps</span><span class="p">,</span> <span class="s1">&#39;xi&#39;</span><span class="p">:</span> <span class="n">xi</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># it may take a while to finish</span>
+<span class="n">df_test_res</span> <span class="o">=</span> <span class="n">sweep_hparams</span><span class="p">(</span><span class="n">hparams</span><span class="p">,</span> <span class="n">df_test_res</span><span class="p">,</span> <span class="n">use_pretrained_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save_params</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_test_res</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0b45b045bdb547fab8b9a538e81aaf4a", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "", "version_major": 2, "version_minor": 0}
+</script><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ntaps</th>
+      <th>dtaps</th>
+      <th>xi</th>
+      <th>Model</th>
+      <th>Q</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>181</td>
+      <td>0.15</td>
+      <td>FDBP</td>
+      <td>7.239062</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>181</td>
+      <td>0.15</td>
+      <td>EDBP</td>
+      <td>7.244903</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>181</td>
+      <td>0.15</td>
+      <td>GDBP</td>
+      <td>8.223946</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>193</td>
+      <td>0.15</td>
+      <td>FDBP</td>
+      <td>7.611000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>193</td>
+      <td>0.15</td>
+      <td>EDBP</td>
+      <td>7.618716</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>37</td>
+      <td>241</td>
+      <td>1.10</td>
+      <td>EDBP</td>
+      <td>8.596812</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>37</td>
+      <td>241</td>
+      <td>1.10</td>
+      <td>GDBP</td>
+      <td>8.741637</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>37</td>
+      <td>253</td>
+      <td>1.10</td>
+      <td>FDBP</td>
+      <td>8.590569</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>37</td>
+      <td>253</td>
+      <td>1.10</td>
+      <td>EDBP</td>
+      <td>8.670206</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>37</td>
+      <td>253</td>
+      <td>1.10</td>
+      <td>GDBP</td>
+      <td>8.746362</td>
+    </tr>
+  </tbody>
+</table>
+<p>147 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">curves</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">cms</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdPu_r</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">cm</span><span class="p">,</span> <span class="n">mod</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cms</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;FDBP&#39;</span><span class="p">,</span> <span class="s1">&#39;EDBP&#39;</span><span class="p">,</span> <span class="s1">&#39;GDBP&#39;</span><span class="p">]):</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">df_test_res</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Model&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;dtaps&#39;</span><span class="p">,</span> <span class="s1">&#39;ntaps&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+  <span class="n">gplt</span><span class="o">.</span><span class="n">wireframe_cmap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">mod</span><span class="p">)</span>
+  
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;N-filter length&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;D-filter length&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Q-factor (dB)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fde1cb677f0&gt;
+</pre></div>
+</div>
+<img alt="../_images/benchmark_few_taps_8_1.png" src="../_images/benchmark_few_taps_8_1.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "commplax"
+        },
+        kernelOptions: {
+            kernelName: "commplax",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'commplax'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="learned_params.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Learned params</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="bp_conv1d.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">BP of Conv1D</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Qirui Fan, Chao Lu, Alan Pak Tao Lau<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

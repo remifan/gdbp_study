@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combined neural network and adaptive DSP training for long-haul optical communications &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Article
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../article.html">
+   Combined neural network and adaptive DSP training for long-haul optical communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Source Codes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stateful_system.html">
+   Stateful system
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmark.html">
+   Benchmark
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bp_conv1d.html">
+   BP of Conv1D
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/article.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/remifan/gdbp_study"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/remifan/gdbp_study/issues/new?title=Issue%20on%20page%20%2Fnotebooks/article.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/remifan/gdbp_study/blob/master/docs/notebooks/article.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#i-introduction">
+   I. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ii-algorithm-structure-and-coding-framework">
+   II. Algorithm structure and coding framework
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-forward-pass">
+     A. Forward pass
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#b-backward-pass">
+     B. Backward pass
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#c-jax-based-framework">
+     C. JAX-based framework
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimental-results">
+   Experimental Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="combined-neural-network-and-adaptive-dsp-training-for-long-haul-optical-communications">
+<h1>Combined neural network and adaptive DSP training for long-haul optical communications<a class="headerlink" href="#combined-neural-network-and-adaptive-dsp-training-for-long-haul-optical-communications" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="i-introduction">
+<h2>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">¶</a></h2>
+<p>Digital back propagation (DBP) is the standard digital signal processing(DSP) algorithm for fiber nonlinear compensation <span id="id1">[<a class="reference internal" href="#id36">IK08</a>]</span> in long-haul systems for single channel and wavelength division multiplexing (WDM) systems <span id="id2">[<a class="reference internal" href="#id37">LR03</a>, <a class="reference internal" href="#id38">MYL10</a>]</span>. Over the past decade, different variants of DBP such as filtered DBP (FDBP) <span id="id3">[<a class="reference internal" href="#id39">DL10</a>, <a class="reference internal" href="#id40">RMF+11</a>]</span> are proposed to improve their performance/complexity trade-offs. FDBP assumes a parameterized low-pass filter (LPF) for the signal power waveform to obtain an improved phase rotation at the nonlinear step of the DBP and it has been well studied theoretically and experimentally. An extension to FDBP is enhanced DBP (EDBP) where the LPF taps are free optimization variables <span id="id4">[<a class="reference internal" href="#id41">SMF14</a>, <a class="reference internal" href="#id42">SRM+16</a>]</span>. Hager et al. studied through simulations the advantages of separately optimizing each LPF <span id="id5">[<a class="reference internal" href="#id43">HagerP20</a>]</span> and a single-channel 1-step EDBP was also experimentally demonstrated <span id="id6">[<a class="reference internal" href="#id42">SRM+16</a>]</span>. For WDM systems, it is recently demonstrated that coupled-channel EDBP has optimal performance by accounting for XPM through simulations <span id="id7">[<a class="reference internal" href="#id44">CFL+21</a>]</span>. Intra-channel four-wave mixing (IFWM) based-compensation techniques, sometimes referred to as correlated DBP, are based on perturbation theory and have also been studied through simulations <span id="id8">[<a class="reference internal" href="#id46">LDH17</a>, <a class="reference internal" href="#id45">LK15</a>]</span>. In recent years, machine learning (ML) techniques are applied to DBP by treating the iterative linear and nonlinear operation of DBP as the linear and nonlinear operations of a deep neural network (DNN). Hager et al. <span id="id9">[<a class="reference internal" href="#id47">HagerP18</a>]</span> showed how ML-based approaches can reduce complexity for the same performance through simulations. In addition, our previous work experimentally demonstrated such concept in WDM systems and further provided semi-analytical explanations of the optimal linear filter and nonlinear phase rotation configurations <span id="id10">[<a class="reference internal" href="#id48">FZG+20</a>]</span> learned by ML.</p>
+<div class="figure align-default" id="time-varying-effects">
+<a class="reference internal image-reference" href="notebooks/images/fig1.png"><img alt="notebooks/images/fig1.png" src="notebooks/images/fig1.png" style="height: 250px;" /></a>
+<p class="caption"><span class="caption-text">Time varying effects such as laser phase noise or state of polarization (SOP) rotations (denoted collectively as <span class="math notranslate nohighlight">\(\theta(t)\)</span> above) induce different distortions to different batches and complicates the ML training process.</span><a class="headerlink" href="#time-varying-effects" title="Permalink to this image">¶</a></p>
+</div>
+<p>When dividing the input signal sequence into batches for ML training as show in {\hyperref[ref-01]{Fig. 1}}, time-varying impairments such as state of polarization (SOP) rotations or laser phase noise will affect each batch differently. This complicates the NN training as it intertwines with adaptive DSP that are used to track and compensate the time-varying impairments. Fundamentally, the complications arise from the fact that 1) virtually all ML training methodologies are based on data in batches as they are often more hardware-efficient, flexible for different optimization strategies while adaptive DSP training in optical communications are symbol-by-symbol based, and 2) when an NN precedes adaptive DSP, the NN output cannot be used to calculate the mean squared error (MSE) for backpropagation of gradients since they are corrupted by time-varying impairments. Consequently, in all aforementioned works, NN parameters learning are separated from time-varying parameters learning/tracking by adaptive DSP techniques by 1) conducting simulation studies where time-varying impairments are absent <span id="id11">[<a class="reference internal" href="#id48">FZG+20</a>, <a class="reference internal" href="#id47">HagerP18</a>, <a class="reference internal" href="#id50">SRS+21</a>]</span>; 2) appending NN blocks after all the standard DSP blocks so that the NN is essentially immune to time-varying impairments; 3) defining the cost function to be the MSE between the NN output and another benchmark algorithm (e.g. DBP) so that time-varying impairments affect both algorithms equally and are largely cancelled out <span id="id12">[<a class="reference internal" href="#id41">SMF14</a>, <a class="reference internal" href="#id42">SRM+16</a>]</span>, and 4) first estimating the time-varying parameters for the received signal sequence by conventional adaptive DSPs, then re-applies the original signal sequence as NN inputs, append the time-varying parameters estimates to the NN outputs to eliminate the time-varying effects so that symbol-by-symbol MSE and standard ML training algorithms can be properly implemented <span id="id13">[<a class="reference internal" href="#id49">GEB+20</a>, <a class="reference internal" href="#id51">OGHager+20</a>]</span>. Unfortunately, all these schemes either ignore realistic time-varying effects, work only on impractical system setups, prohibit optimal placement of ML blocks in the whole DSP chain, or require impractical training methodologies with excessive memory or time delay in order to decouple the training of NN and adaptive DSP parameters. Consequently, ML has not been properly integrated into other DSP blocks and their potentials are not yet fully realized in long-haul digital coherent communications.</p>
+<p>In this paper, we proposed to combine the learning of NN and time-varying parameters of the optical link by transforming the adaptive DSP as an additional \textit{stateful NN} layer appended to the main NN output so that the whole parameter training process will amend itself to standard batch-based backpropagation-like training algorithm in ML. In this case, conventional adaptive filter state updates are expressed through either symbol-by-symbol or block-by-block state evolutions which are calculated during the forward pass of the backpropagation algorithm. The stateful NN layer outputs are used to calculate the MSE and initiate the gradients calculation for the backward pass. Note that stateful NN is not a brand-new concept in ML: in fact, recurrent neural network (RNN) is one example of such stateful models <span id="id14">[<a class="reference internal" href="#id52">LBE15</a>]</span>. At each time step <span class="math notranslate nohighlight">\(t\)</span>, the input is transformed to an internal state that evolves with time and help determine the present and future outputs. Such transformation is typically a nonlinear mapping with trainable parameters. In contrast, the internal states in our case is exactly the adaptive filter tap values (or \textit{filter states}) at each iteration. While the input is used to update the filter states at each iteration, the optimized filter states are ultimately functions of <span class="math notranslate nohighlight">\(t\)</span> and not the input data since the filter states are meant to track the time-varying impairments of the optical link.</p>
+<p>With the proposed combined learning methodology, we derived the complete gradients and update procedures of the generalized DBP(GDBP) algorithm where all the filter taps of the linear and nonlinear steps of DBP are optimized with concurrent mitigation of polarization effects, frequency offset, carrier phase tracking and other residual link impairments using additional adaptive DSP. The GDBP demonstrated an average gain of 0.13 and 0.36 over FDBP and DBP in a 7 x 288 Gb/s polarization multiplexed (PM)-16QAM transmission experiments over 1125 km. For complexity-constraint scenarios with short filter taps, we show that GDBP can largely retain its performance and demonstrated a gain of 1 dB over FDBP/EDBP which highlight the importance of optimized linear filter taps. As the most general form with largest number of optimization variables for a given total number of steps, the GDBP is the first experimental demonstration of optimal single-channel DBP based-fiber nonlinearity compensation algorithm.</p>
+<p>In addition, \foreignlanguage{english}{we chose JAX<span id="id15">[<a class="reference internal" href="#id53">BFH+18</a>]</span>,} \foreignlanguage{english}{a Python library designed for high-performance numerical computing and machine learning research due to its} flexibility and scalability. \foreignlanguage{english}{We developed a JAX-based framework called ‘COMMPLAX’<span id="id16">[<a class="reference internal" href="#id54">FLL21</a>]</span> that can easily and practically implement the} proposed stateful NN learning methodology and fully exploit the benefits of ML tools and adaptive DSP. \foreignlanguage{english}{COMMPLAX is a set of new versatile and powerful tools that go beyond the algorithms used in this paper and can provide a single common run-time efficient coding platform for DSP/ML research in optical communications.} The codes and data for the results in this paper are available at \url{https://github.com/remifan/gdbp_study}.</p>
+</div>
+<div class="section" id="ii-algorithm-structure-and-coding-framework">
+<h2>II. Algorithm structure and coding framework<a class="headerlink" href="#ii-algorithm-structure-and-coding-framework" title="Permalink to this headline">¶</a></h2>
+<p>The proposed NN + adaptive DSP structure to compensate fiber nonlinearity is shown in Fig. 2. The NN for fiber nonlinearity compensation consists of multiple interleaving layers of linear filters (called D-filters) and nonlinear filters (called N-filters) where the nonlinear phase rotations are filtered by the signal power waveform of the D-filter output. In this setup, conventional DBP corresponds to the standard chromatic dispersion (CD) equalizer for D-filter and a 1-tap N-filter. FDBP uses a <span class="math notranslate nohighlight">\(L_{N}\)</span>-tap N-filter with Gaussian, super-Gaussian triangular or brick-wall shape whose parameters are typically brute-force optimized <span id="id17">[<a class="reference internal" href="#id55">dJRGC15</a>]</span>.  EDBP relaxes the filter shape constraint so that each tap of the N-filter is optimized individually. Finally, the most generalized GDBP optimizes the individual D-filter taps in addition to EDBP. Note that all these DBP variants in comparison are not intended to be trained in a real-time manner. Therefore, GDBP has the same computational complexity as that of EDBP and FDBP.</p>
+<div class="figure align-default" id="gdbp-dsp">
+<a class="reference internal image-reference" href="notebooks/images/fig2.png"><img alt="notebooks/images/fig2.png" src="notebooks/images/fig2.png" style="height: 240px;" /></a>
+<p class="caption"><span class="caption-text">The NN GDBP and adaptive DSP structure proposed in our study. Conv1D: 1-D convolution layer. BPN: Batch power normalization; MIMO: multiple- input-multiple-output filters. FOE: frequency offset estimator; Note that MIMO and FOE are adaptive DSP.</span><a class="headerlink" href="#gdbp-dsp" title="Permalink to this image">¶</a></p>
+</div>
+<p>In our study, the GDBP is followed by a frequency offset estimator(FOE) consisting of a radius directed equalizer (RDE) <span id="id18">[<a class="reference internal" href="#id56">FIS09</a>]</span> and Kalman filtering (KF) <span id="id19">[<a class="reference internal" href="#id57">IN14</a>]</span>. Then, we use a residual filter (R-filter) that aims to implicitly learn and collectively mitigate all the residual unaccounted linear and/or nonlinear static impairments along the link. This is followed by adaptive DSP algorithms to compensate time-varying polarization effects and laser phase noise. As a good trade-off between transmission performance and complexity, we chose a T/2 fractionally spaced multiple-input-multiple-output (MIMO) decision directed least mean squares (DDLMS) filter <span id="id20">[<a class="reference internal" href="#id58">MZK12</a>]</span> to jointly perform polarization demultiplexing, symbol timing and phase equalization in our work. As will be shown in later sections, the R-filter is necessary since it improves overall transmission performance, and its functionalities cannot be realized by the MIMO filters which are often constrained to a few taps for optimal steady-state performance <span id="id21">[<a class="reference internal" href="#id58">MZK12</a>]</span>. The R-filter and adaptive DSP are additional NN layers appended to the GDBP, thus forming an overall NN structure.</p>
+<p>Let <span class="math notranslate nohighlight">\(p_{x\left(y\right)}(t)\)</span> be the coherently detected waveform at the receiver for the <span class="math notranslate nohighlight">\(x\)</span>- or <span class="math notranslate nohighlight">\(y\)</span>-polarization followed by 2 times oversampling with sampling period <span class="math notranslate nohighlight">\(T/2\)</span>. Denote the <span class="math notranslate nohighlight">\(k^{th}\)</span> batch of samples as GDBP input as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\mathbf{P}_{1,x(y)}\left[k\right]=[p_{x\left(y\right)}\left(c_{k}T/2\right), p_{x\left(y\right)}\left(\left(c_{k}+1\right)T/2\right),\cdots , p_{x\left(y\right)}\left((c_{k}+G)T/2\right)]
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_{k}\)</span> is the starting sample index for the <span class="math notranslate nohighlight">\(k^{th}\)</span> data batch and <span class="math notranslate nohighlight">\(G\)</span> is the length of the input batch. The output label <span class="math notranslate nohighlight">\(\mathbf{D}_{x(y)}[k]\)</span>of the overall neural network are either the corresponding original transmitted symbol sequence <span class="math notranslate nohighlight">\(\mathbf{E}_{x(y)}\left[k\right]\)</span> or the decided symbol sequence with length <span class="math notranslate nohighlight">\(B\)</span>. We will now describe the forward and backward pass of the NN backpropagation algorithm in presence of time-varying impairments.</p>
+<div class="section" id="a-forward-pass">
+<h3>A. Forward pass<a class="headerlink" href="#a-forward-pass" title="Permalink to this headline">¶</a></h3>
+<p>In the forward pass of the backpropagation algorithm, let <span class="math notranslate nohighlight">\(\mathbf{P}_{m,x(y)}[k]\)</span>, <span class="math notranslate nohighlight">\(\mathbf{Q}_{m,x(y)}[k]\)</span> be the signals within the <span class="math notranslate nohighlight">\(m\)</span>-th GDBP step so that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\tag{1}
+\mathbf{Q}_{m,x\left(y\right)}\left[k\right] &amp; =\mathbf{P}_{m,x\left(y\right)}\left[k\right]*\mathbf{d}_{m,x\left(y\right)}\left[k\right], \\
+\tag{2}
+\mathbf{P}_{m+1,x(y)}[k] &amp; ={\mathbf{Q}_{m,x(y)}}[k]\odot e^{j({\left| \mathbf{Q}_{m,x}\left[k\right]\right| ^{2}}*{\mathbf{n}_{m,xx\left(yx\right)}}[k]+{\left| \mathbf{Q}_{m,y}[k]\right| ^{2}}*{\mathbf{n}_{m,xy\left(yy\right)}}[k])}
+\end{align*}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\odot \)</span> denotes element-wise multiplication, <span class="math notranslate nohighlight">\(\mathbf{d}_{m,x}[k]\)</span>, <span class="math notranslate nohighlight">\(\mathbf{n}_{m,xx}[k]\)</span> are the D-filter and N-filter with length <span class="math notranslate nohighlight">\(L_{D}\)</span> and <span class="math notranslate nohighlight">\(L_{N}\)</span> respectively and <span class="math notranslate nohighlight">\(\mathbf{*}\)</span> denotes the convolution operation. For a \textit{M}-step GDBP, the output <span class="math notranslate nohighlight">\(\mathbf{P}_{M+1,x(y)}[k]\)</span>\footnote{A batch power normalization maybe applied to <span class="math notranslate nohighlight">\(\mathbf{P}_{M+1,x(y)}[k]\)</span> to obtain <span class="math notranslate nohighlight">\(\mathbf{P'}_{M+1,x(y)}[k]\)</span> for improving the stability of subsequent adaptive DSP training.}is fed into frequency offset estimator based on RDE-KF with output</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{3}
+\mathbf{U}_{x(y)}\left[k\right]=\mathbf{P}_{M+1,x(y)}[k]\odot e^{j\left(\varphi _{k-1}+\pi \mathbf{f}_{k}\mathbf{T}\right)}
+\end{equation*}\]</div>
+<p>followed by the R-filter with output</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{4}
+\mathbf{S}_{x(y)}[k]=\mathbf{U}_{x(y)}[k]\mathbf{*r}_{x(y)}[k]
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{r}_{x(y)}[k]\)</span> are the R-filter taps with length <span class="math notranslate nohighlight">\(L_{R}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{f}_{k}\)</span> is the FO estimate for each sample in the <span class="math notranslate nohighlight">\(k^{th}\)</span> batch, <span class="math notranslate nohighlight">\(\mathbf{T}\)</span> is an upper triangular matrix with <span class="math notranslate nohighlight">\(\mathbf{T}_{ab}=T\)</span> for <span class="math notranslate nohighlight">\(b\geq a\)</span> and 0 otherwise. In this case, <span class="math notranslate nohighlight">\(\varphi _{k}=\varphi _{k-1}+\pi \mathbf{f}_{k}\mathbf{T}\)</span> denotes the FO-induced accumulated phase at the end of the <span class="math notranslate nohighlight">\(k^{th}\)</span> batch. Note that in our implementation, <span class="math notranslate nohighlight">\(\mathbf{f}_{k}\)</span>is the linear interpolation of FOE’s block estimate <span id="id22">[<a class="reference internal" href="#id57">IN14</a>]</span> over a batch of 5 blocks.  <span class="math notranslate nohighlight">\(\mathbf{S}_{x(y)}[k]\)</span> is then passed into the set of MIMO filters <span class="math notranslate nohighlight">\(\mathbf{h}_{xx}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h}_{xy}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h}_{yx}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h}_{yy}\)</span>, with length <span class="math notranslate nohighlight">\(L\)</span> that track and equalize time-varying polarization impairments and down sample to 1 sample per symbol. Within this batch of <span class="math notranslate nohighlight">\(\mathbf{S}_{x(y)}[k]\)</span>, define the <span class="math notranslate nohighlight">\(i^{th}\)</span> MIMO output as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{5}
+v_{x(y)}[k,i]=\mathbf{h}_{xx(yx)}^{\left(k,i\right)}\mathbf{S}_{x}^{\boldsymbol{'*}}[k,2i]+\mathbf{h}_{xy(yy)}^{\left(k,i\right)}\mathbf{S}_{y}^{\boldsymbol{'*}}[k,2i]
+\end{equation*}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{6}
+\mathbf{S}_{x(y)}^{'}\left[k,2i\right]=\left[s_{x\left(y\right)}\left[c_{k}+2i\right], s_{x\left(y\right)}\left[c_{k}+2i+1\right],\cdots ,s_{x\left(y\right)}[c_{k}+2i+L-1]\right]
+\end{equation*}\]</div>
+<p>is a truncated version of the <span class="math notranslate nohighlight">\(\mathbf{S}_{x(y)}[k]\)</span>. The MIMO filter taps are updated in a symbol-by-symbol fashion using the normalized LMS algorithm [23]</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\tag{7}
+\mathbf{h}_{xx(yx)}^{\left(k,i+1\right)}&amp;=\mathbf{h}_{xx(yx)}^{\left(k,i\right)}+\frac{\mu _{h}}{\left| \mathbf{S}_{x}^{'}\left[2i\right]\right| ^{2}+\varepsilon }e_{x(y)}\left[k,i\right]\odot \mathbf{S}_{x}^{\boldsymbol{'*}}\left[2i\right] \\
+\mathbf{h}_{yy(xy)}^{\left(k,i+1\right)}&amp;=\mathbf{h}_{yy(xy)}^{\left(k,i\right)}+\frac{\mu _{h}}{\left| \mathbf{S}_{y}^{'}\left[2i\right]\right| ^{2}+\varepsilon }e_{y(x)}\left[k,i\right]\odot \mathbf{S}_{y}^{\boldsymbol{'*}}\left[2i\right] 
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu _{h}\)</span> is the step-size parameter, <span class="math notranslate nohighlight">\(\varepsilon \)</span> is a small value used for numerical stabilization. Note the MIMO taps are updating symbol-by-symbol within this <span class="math notranslate nohighlight">\(k^{th}\)</span> batch in the \textit{forward pass} and hence from the perspective of NN training, the NN has a state that evolves within a batch and across data batches. The MSE is given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{8}
+e_{x(y)}[k,i]=d_{x(y)}[k,i]-v_{x(y)}[k,i]e^{j{\arg (f_{x(y)}}[k,i])}
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(d_{x(y)}[k,i]\)</span> is the reference symbol, which is either the original transmitted symbols as pilots in training mode or detected symbol <span class="math notranslate nohighlight">\(D(f_{x(y)}[k,i]v_{x(y)}[k,i])\)</span> in decision-directed tracking mode. The 1-tap carrier phase tracker <span class="math notranslate nohighlight">\(f_{x(y)}[k,i]\)</span> is <span id="id23">[<a class="reference internal" href="#id58">MZK12</a>]</span> updated according to</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{9}
+f_{x(y)}\left[k,i+1\right]=f_{x(y)}\left[k,i\right]+\frac{\mu _{f}}{\left| v_{x(y)}[k,i]\right| ^{2}+\varepsilon }\left(d_{x(y)}[k,i]-f_{x(y)}[k,i]v_{x(y)}[k,i]\right)v_{x(y)}^{*}\left[k,i\right]
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu _{f}\)</span> is the step size. It should be noted that the calculation of MSE <span class="math notranslate nohighlight">\(e_{x(y)}[k,i]\)</span> also evolves with symbol-by-symbol update of <span class="math notranslate nohighlight">\(\mathbf{h}_{xx}^{\left(k,i\right)},\mathbf{h}_{xy}^{\left(k,i\right)},\mathbf{h}_{yx}^{\left(k,i\right)}\)</span>and <span class="math notranslate nohighlight">\(\mathbf{h}_{yy}^{\left(k,i\right)}\)</span>within a batch of data, which will be reflected in the backward pass.</p>
+</div>
+<div class="section" id="b-backward-pass">
+<h3>B. Backward pass<a class="headerlink" href="#b-backward-pass" title="Permalink to this headline">¶</a></h3>
+<p>Starting from the loss at the <span class="math notranslate nohighlight">\(i^{th}\)</span> symbol of the <span class="math notranslate nohighlight">\(k^{th}\)</span> batch</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{10}
+\begin{array}{ll}
+\mathcal{L}[k,i] &amp; =e_{x}[k,i]e_{x}^{*}[k,i]+e_{y}[k,i]e_{y}^{*}[k,i]\\
+e_{x(y)}\left[k,i\right] &amp; =\left(\mathbf{S}_{x\left(y\right)}^{\boldsymbol{'*}}\left[k,2i\right]\mathbf{h}_{xx\left(yy\right)}^{\left(k,i\right)}+\mathbf{S}_{y\left(x\right)}^{\boldsymbol{'*}}\left[k,2i\right]\mathbf{h}_{xy\left(yx\right)}^{\left(k,i\right)}\right)f_{x\left(y\right)}\left[k,i\right]-d_{x\left(y\right)}\left[k,i\right],
+\end{array}
+\end{equation*}\]</div>
+<p>we apply the chain rule step-by-step and first derive the gradient of <span class="math notranslate nohighlight">\(\mathcal{L}(i)\)</span> with respect to <span class="math notranslate nohighlight">\(\mathbf{S}_{x}^{\boldsymbol{'}}[k,2i]\)</span> as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{11}
+\frac{\partial \mathcal{L}[k,i]}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}[k,2i]}=\frac{\partial (e_{x}[k,i]e_{x}^{*}[k,i]+e_{y}[k,i]e_{y}^{*}[k,i])}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}[k,2i]}.
+\end{equation*}\]</div>
+<p>Note that the above notation <span class="math notranslate nohighlight">\(\partial (\cdot )/\partial (\cdot )\)</span> is called co-gradient in some literature <span id="id24">[<a class="reference internal" href="#id59">KD09</a>]</span> to distinguish from the gradient operator <span class="math notranslate nohighlight">\(\nabla =\left(\partial (\cdot )/\partial (\cdot )\right)^{*}\)</span> that represents the steepest descent direction. Using Wirtinger calculus for complex variables, we obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{12}
+\begin{array}{ll}
+\frac{\partial \mathcal{L}\left[k,i\right]}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}\left[k,2i\right]} &amp; =\frac{\partial \left(e_{x}\left[k,i\right]e_{x}^{*}\left[k,i\right]+e_{y}\left[k,i\right]e_{y}^{*}\left[k,i\right]\right)}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}\left[k,2i\right]}\\ &amp; =e_{x}^{*}\left[k,i\right]\frac{\partial e_{x}\left[k,i\right]}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}\left[k,2i\right]}+e_{y}^{*}\left[k,i\right]\frac{\partial e_{y}\left[k,i\right]}{\partial \mathbf{S}_{x}^{\boldsymbol{'}}\left[k,2i\right]}\\ &amp; =e_{x}^{*}\left[k,i\right]f_{x}\left[k,i\right]\mathbf{h}_{xx}^{\left(k,i\right)T}+e_{y}^{*}\left[k,i\right]f_{y}\left[k,i\right]\mathbf{h}_{xy}^{\left(k,i\right)T}.
+\end{array}
+\end{equation*}\]</div>
+<p>Similarly,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{13}
+\frac{\partial \mathcal{L}[k,i]}{\partial \mathbf{S}_{y}^{\boldsymbol{'}}[k,2i]}=e_{x}^{*}\left[k,i\right]f_{x}\left[k,i\right]\mathbf{h}_{yx}^{\left(k,i\right)T}+e_{y}^{*}\left[k,i\right]f_{y}\left[k,i\right]\mathbf{h}_{yy}^{\left(k,i\right)T}.
+\end{equation*}\]</div>
+<p>To calculate the co-gradient of loss with respect to the whole batch <span class="math notranslate nohighlight">\(\mathbf{S}_{x(y)}[k]\)</span>, we first express</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{14}
+\frac{\partial \mathcal{L}[k,i]}{\partial \mathbf{S}_{x(y)}[k]}=\left[0,0,\cdots ,0,\frac{\partial \mathcal{L}\left[k,i\right]}{\partial \mathbf{S}_{x\left(y\right)}^{\boldsymbol{'}}\left[k,2i\right]},0,\cdots ,0,0\right]
+\end{equation*}\]</div>
+<p>as a row vector with <span class="math notranslate nohighlight">\(2i\)</span> zeros preceding <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}\left[k,i\right]}{\partial \mathbf{S}_{x(y)}^{\boldsymbol{'}}\left[k,2i\right]}\)</span> followed by <span class="math notranslate nohighlight">\(G-L-2i\)</span> zeros. Note that the location of non-zero entries of <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}[k,i]}{\partial \mathbf{S}_{x(y)}[k]}\)</span> shift with <span class="math notranslate nohighlight">\(i\)</span>. Now, let <span class="math notranslate nohighlight">\(l\left[k\right]=\sum _{i=0}^{B-1}\mathcal{L}[k,i]\)</span> be the total batch loss. The overall backpropagating co-gradient is then given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{15}
+\frac{\partial l[k]}{\partial \mathbf{S}_{x(y)}[k]}=\sum _{i=0}^{B-1}\frac{\partial \mathcal{L}[k,i]}{\partial \mathbf{S}_{x(y)}[k]}.
+\end{equation*}\]</div>
+<p>For the R-filter, the co-gradients with respect to the inputs are computed by convolving the reversed weight kernel with the gradients with respect to the output <span id="id25">[<a class="reference internal" href="#id60">MHL13</a>]</span> i.e.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{16}
+\frac{\partial l[k]}{\partial \mathbf{U}_{x(y)}[k]}=\frac{\partial l[k]}{\partial \mathbf{S}_{x(y)}[k]}*\overleftarrow {\mathbf{r}_{x(y)}[\mathrm{k}]}
+\end{equation*}\]</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In practice, since we convolute 2 sequences with finite length, the backpropagation of Conv1D depends on its mode/padding style. We have a short notebook to explain this <span class="xref std std-doc">./notebooks/bp_conv1d</span>.</p>
+</div>
+<p>where <span class="math notranslate nohighlight">\(\overleftarrow {\left(\cdot \right)}\)</span> denotes the flipped/reversed operation. This co-gradient will be backpropagated to update the GDBP parameters. On the other hand, the gradient for R-filter update is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{17}
+\nabla _{{\mathbf{r}_{x(y)}}[k]}=\left(\frac{\partial l[k]}{\partial \mathbf{r}_{x(y)}[k]}\right)^{*}=\left(\frac{\partial l[k]}{\partial \mathbf{S}_{x(y)}[k]}*\overleftarrow {\mathbf{U}_{x(y)}[k]}\right)^{*}
+\end{equation*}\]</div>
+<p>and the co-gradients for the FOE layer is simply</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tag{18}
+\frac{\partial l[k]}{\partial \mathbf{P}_{M+1,x(y)}\left[k\right]}=\frac{\partial l[k]}{\partial \mathbf{U}_{x(y)}[k]}\odot e^{j\left(\varphi _{k-1}+\pi \mathbf{f}_{k}\mathbf{T}\right)}.
+\end{equation*}\]</div>
+<p>Finally, to update the GDBP parameters, one begins with <span class="math notranslate nohighlight">\(\frac{\partial l[k]}{\partial \mathbf{P}_{M+1,x(y)}[k]}\)</span> and apply the chain rule to obtain</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\tag{19}
+\frac{\partial l\left[k\right]}{\partial \mathbf{Q}_{m,x\left(y\right)}\left[k\right]} &amp; = \frac{\partial l\left[k\right]}{\partial \mathbf{P}_{m+1,x\left(y\right)}\left[k\right]}\odot \biggl[\mathbf{g}_{x\left(y\right)}\left[k\right]\\ &amp;\quad +\left(j\mathbf{Q}_{m,x\left(y\right)}\left[k\right]\odot \mathbf{g}_{x\left(y\right)}\left[k\right]\right)*\mathbf{n}_{m,xx\left(yy\right)}\left[k\right]\odot \mathbf{Q}_{m,x\left(y\right)}^{\boldsymbol{*}}\left[k\right]\\ &amp;\quad +\mathbf{g}_{y\left(x\right)}\left[k\right]+\left(j\mathbf{Q}_{m,y\left(x\right)}\left[k\right]\odot \mathbf{g}_{y\left(x\right)}\left[k\right]\right)*\mathbf{n}_{m,yx\left(xy\right)}\left[k\right]\odot \mathbf{Q}_{m,x\left(y\right)}^{\boldsymbol{*}}\left[k\right]\biggr] \\
+\tag{20}
+\frac{\partial l[k]}{\partial \mathbf{P}_{m,x(y)}\left[k\right]} &amp; = \frac{\partial l[k]}{\partial \mathbf{Q}_{m,x(y)}\left[k\right]}*\mathbf{d}_{m,x\left(y\right)}\left[k\right]
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{g}_{x\left(y\right)}\left[k\right]=e^{j({\left| \mathbf{Q}_{m,x}\left[k\right]\right| ^{2}}*{\mathbf{n}_{m,xx\left(yx\right)}}[k]+{\left| \mathbf{Q}_{m,y}\left[k\right]\right| ^{2}}*{\mathbf{n}_{m,xy\left(yy\right)}}[k])}\)</span>. The corresponding gradients of the <span class="math notranslate nohighlight">\(m^{th}\)</span> GDBP layer are</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\tag{21}
+\nabla _{{\mathbf{n}_{m,xx\left(yy\right)}}\left[k\right]} &amp; =\left(\frac{\partial l\left[k\right]}{\partial \mathbf{n}_{m,xx\left(yy\right)}\left[k\right]}\right)^{*}\\ &amp; =\left(\frac{\partial l\left[k\right]}{\partial \mathbf{P}_{m+1,x\left(y\right)}\left[k\right]}\odot \left(\left(j\mathbf{Q}_{m,x\left(y\right)}\left[k\right]\odot \mathbf{g}_{x\left(y\right)}\left[k\right]\right)*\overleftarrow {\left| \mathbf{Q}_{m,x\left(y\right)}\left[k\right]\right| ^{2}}\right)\right)^{*} \\
+\tag{22}
+\nabla _{{\mathbf{n}_{m,xy\left(yx\right)}}\left[k\right]} &amp; =\left(\frac{\partial l\left[k\right]}{\partial \mathbf{n}_{m,xy\left(yx\right)}\left[k\right]}\right)^{*}\\ &amp; =\left(\frac{\partial l\left[k\right]}{\partial \mathbf{P}_{m+1,x\left(y\right)}\left[k\right]}\odot \left(\left(j\mathbf{Q}_{m,x(y)}\left[k\right]\odot \mathbf{g}_{x(y)}\left[k\right]\right)*\overleftarrow{\left| \mathbf{Q}_{m,y(x)}[k]\right| ^{2}}\right)\right)^{*} \\
+\tag{23}
+\nabla _{{\mathbf{d}_{m,x\left(y\right)}}\left[k\right]} &amp; =\left(\frac{\partial l\left[k\right]}{\partial \mathbf{d}_{m,x\left(y\right)}\left[k\right]}\right)^{*}\\ &amp; =\left(\frac{\partial l[k]}{\partial \mathbf{Q}_{m,x(y)}[k]}*\overleftarrow{\mathbf{P}_{m,x(y)}[k]}\right)^{*}
+\end{align*}\]</div>
+<p>and are repeated to obtain the updates of each GDBP step.</p>
+<p>The overall parameter update process derived above creates a multi-modal learning environment in which the MIMO taps are updated stochastically symbol by symbol while the D-, N- and R-filter learn their parameters batch by batch. It should also be noted that other FOE, MIMO and carrier phase tracker can be used as long as their corresponding update equations are properly incorporated into the NN state in the forward pass.</p>
+</div>
+<div class="section" id="c-jax-based-framework">
+<h3>C. JAX-based framework<a class="headerlink" href="#c-jax-based-framework" title="Permalink to this headline">¶</a></h3>
+<p>JAX <span id="id26">[<a class="reference internal" href="#id53">BFH+18</a>]</span> is developed by Google and provide universal support of complex-valued numbers, efficient acceleration, parallelization, vectorization (easy scalability to more dimensions) of codes and distributed gradient computations that collectively enables hardware optimization and accelerate execution time. It also allows automatic differentiation of loss functions consisting of arbitrary compositions of accelerated, vectorized, parallelized functions. Most notably, there are more and more platforms built around JAX since 2019 such as Reinforcement Learning, Graph NN <span id="id27">[<a class="reference internal" href="#id61">dee</a>]</span> and discipline-specific tools for molecular dynamics, differentiable convex optimization, differentiable cosmology, transportation optimization etc <span id="id28">[<a class="reference internal" href="#id62">n2cholas</a>]</span>. Increasingly more ML research and ML applications are based on JAX, indicating its emerging importance and popularity.} For our study, we developed a JAX-based ML-DSP framework for physical layer optical communications called COMMPLAX <span id="id29">[<a class="reference internal" href="#id54">FLL21</a>]</span> which allows abstraction of the adaptive DSP as stateful layer interface, resulting flexible composition of DSP and regular NN layers.</p>
+</div>
+</div>
+<div class="section" id="experimental-results">
+<h2>Experimental Results<a class="headerlink" href="#experimental-results" title="Permalink to this headline">¶</a></h2>
+<p>{\hyperref[ref-02]{Fig. 3}} shows our WDM experimental setup. At the transmitter side, 2 36 GBaud 16-QAM sequences mapped from 2 independent random bit sources are generated for even and odd channels for decorrelation purpose. The channel spacing is 50 GHz. After raised-cosine pulse shaping with 0.1 roll-off factor, the signal is loaded into 112GSa/s arbitrary waveform generator (AWG, Keysight 8194A) whose outputs are amplified by SHF-807 to drive the modulator. Polarization division multiplexing (PDM) emulator is used to emulate polarization multiplexed signals through polarization beam splitter (PBS)-delay-polarization beam combiner (PBC) approach. An EDFA is used to increase the signal power before launching into the 1125-km transmission link consisting of 15 heterogeneous spans. An EDFA-VOA-optical filter triplet is installed for each span which resembles practical settings. The signal launched power is balanced automatically through our link controller to automate sweeping. At the receiver side, a wavelength selective switch (WSS) and local oscillator (LO) are synchronized to collect each channel in time division multiplexed (TDM) manner followed by coherent detection, 80 GSa/s real-time oscilloscope and offline signal processing described above. The above processes are programmed to sweep the launched power for each of the 7 channels to form the training dataset. The whole process is repeated with a completely different random sequence to obtain the testing data. To eliminate any pattern recognition issues for PRBS-based bit sequences <span id="id30">[<a class="reference internal" href="#id63">EBulowL17</a>]</span>, we used the live quantum random numbers generator (QRNG) <span id="id31">[<a class="reference internal" href="#id64">SAL11</a>]</span> through the public interface provided by Australian National University. Two unique sequences of 170624 symbols are obtained and each sequence repeated itself multiple times to form two sequences of 1 and 1.5 million symbols for training and testing respectively.</p>
+<div class="figure align-default" id="experimental-setup">
+<a class="reference internal image-reference" href="notebooks/images/fig3.png"><img alt="notebooks/images/fig3.png" src="notebooks/images/fig3.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-text">Experimental setup for 7-channel WDM transmission experiment. AWG: arbitrary waveform generator. ADC: analog to digital converter; WSS: Wavelength selection switch; PDM Emu.: polarization division multiplex emulator; LO: local oscillator; ADC: analog to digital converter; DSO: digital sampling oscilloscope.</span><a class="headerlink" href="#experimental-setup" title="Permalink to this image">¶</a></p>
+</div>
+<p>We focus on 5-span per step GDBP (i.e. 3 total steps for our 15 span link) as it is shown to have a good performance-complexity tradeoff for FDBP <span id="id32">[<a class="reference internal" href="#id65">GKZ+12</a>]</span>. As a result of brute-force grid search similar to <span id="id33">[<a class="reference internal" href="#id55">dJRGC15</a>]</span>, the optimal nonlinear phase de-rotation factor is 0.15 and 1.1 for all 3 steps of DBP and FDBP respectively. A 3-dB bandwidth of 1.44GHz is found to be</p>
+<p>optimal for the Gaussian-shaped 41-tap LPF of the FDBP. The length of D-filters is 261 taps and the 61-tap R-filters are initialized as delta functions. The 31-tap MIMO filters <span class="math notranslate nohighlight">\(\mathbf{h}_{xx}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h}_{yy}\)</span> are initialized as delta functions and <span class="math notranslate nohighlight">\(\mathbf{h}_{xy}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{h}_{yx}\)</span> are initialized as all-zero filters.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Please check for the definition and implementation of complex-valued Adam. In fact, how C-R optimizers is made is under active discussion. There are 2 candidates, one is to use <code class="docutils literal notranslate"><span class="pre">x*x.conj()</span></code>, the other one is to treate complex number as a pair of real values. Both has been implemented in Commplax.</p>
+</div>
+<p>Complex-valued Adam optimizer are used for training and a batch size of 500 symbols for each iteration provides optimal results from our experimental data. Adam’s learning rate is set to be 10\textsuperscript{-4} in first 500 batches and 10\textsuperscript{-5} afterwards. The evolution of MSE is shown in Fig. 4 (a) and convergence is achieved after around 500 iterations for combined NN and MIMO-DDLMS training and MIMO-DDLMS training only. The steady-state training performance is stable within the 2000-iteration time window. Also, with FDBP configurations as initialization points, Fig. 4(b) shows the averaged normalized MSE between the <span class="math notranslate nohighlight">\(i^{th}\)</span> and last iteration (<span class="math notranslate nohighlight">\(2000^{th}\)</span> iteration in our study) over the D-, N- and R-filter taps.</p>
+<div class="figure align-default" id="loss">
+<a class="reference internal image-reference" href="notebooks/images/fig4.png"><img alt="notebooks/images/fig4.png" src="notebooks/images/fig4.png" style="height: 600px;" /></a>
+<p class="caption"><span class="caption-text">(a) MSE evolution for combined NN and MIMO-DDLMS training and MIMO-DDLMS training only. (b) Evolution of averaged normalized MSE of the D-, N- and R-filters of the 1st step of GDBP (collectively denoted by 𝜽) from their respective converged values.</span><a class="headerlink" href="#loss" title="Permalink to this image">¶</a></p>
+</div>
+<p>Throughout these iterations, the estimated phase noise and maxima of the 4 MIMO filter taps of the center channel is shown in {\hyperref[ref-03]{Fig. 5}}, showing the presence of time-varying impairments across iterations and within each batch of 500 symbols. This indicates the concurrent learning of GDBP and MIMO parameters and thus the integration of ML and adaptive DSP in the learning process. The MIMO filter taps converge relatively quickly followed by continuous tracking of polarization effects. The reduction of the maxima of <span class="math notranslate nohighlight">\(\left| \mathbf{h}_{xx}\right| ,| \mathbf{h}_{yy}| \)</span> over time indicates the presence of time-varying polarization-mode dispersion (PMD) in the testing data as the filters slowly deviate from a delta function.</p>
+<div class="figure align-default" id="time-varying-states">
+<a class="reference internal image-reference" href="notebooks/images/fig5.png"><img alt="notebooks/images/fig5.png" src="notebooks/images/fig5.png" style="height: 600px;" /></a>
+<p class="caption"><span class="caption-text">(a)Estimated phase noise for testing data of channel 4. Inset: phase noise within 1 batch of data (500 symbols). (b) evolution of the maximal tap of the 4 MIMO filters for testing data of channel 4.</span><a class="headerlink" href="#time-varying-states" title="Permalink to this image">¶</a></p>
+</div>
+<p>Using the testing data, the \textit{Q}-factor of the received signal distribution (derived from the bit error ratio(BER) through <span class="math notranslate nohighlight">\(Q=20\log _{10} \left[\sqrt{2}erfc^{-1}\left(2BER\right)\right]\)</span> where <span class="math notranslate nohighlight">\(erfc\)</span> is the inverse complementary error function) vs launched power for channels 1 and 4 are shown in {\hyperref[ref-04]{Fig. 6}} (a) and (b) respectively. As expected, FDBP outperforms standard DBP for the same number of steps. More importantly, EDBP and the most generalized GDBP outperform FDBP by an average of 0.08 dB and 0.13 dB respectively across the 7 channels and outperform DBP by 0.31 dB and 0.36 dB respectively. The optimal performance for each algorithm across the 7 channels are also shown in {\hyperref[ref-04]{Fig. 6}}(c). For WDM systems in presence of time-varying impairments, the results represent the first experimental demonstration of EDBP and GDBP using practical training strategies enabled by our proposed stateful NN structure and the JAX-based framework. Furthermore, as the most general form with largest number of optimization variables for a given total number of steps, the GDBP is also the best single-channel DBP based-fiber nonlinearity compensation algorithm demonstrated in WDM experiments.</p>
+<div class="figure align-default" id="q-vs-lp-ch">
+<a class="reference internal image-reference" href="notebooks/images/fig6.png"><img alt="notebooks/images/fig6.png" src="notebooks/images/fig6.png" style="height: 900px;" /></a>
+<p class="caption"><span class="caption-text">(a), (b) Q-factor vs. launched power for Channel 1 and 4 using CD compensation (CDC) only, DBP, FDBP, EDBP and GDBP for a 7 x 288 Gb/s PM-16QAM system transmitted over 1125 km. (c) Optimal Q-factor for various fiber nonlinearity compensation algorithms across the 7 WDM channels.</span><a class="headerlink" href="#q-vs-lp-ch" title="Permalink to this image">¶</a></p>
+</div>
+<p>The learnt filter shapes of the GDBP for are shown in {\hyperref[ref-05]{Fig. 7}}. The optimized D-filters largely preserved the quadratic phase response for CD compensation while the amplitude responses deviate slightly from a spectrally-flat profile. For the N-filters, the optimal shape deviate from Gaussian and it accounts for the performance difference between FDBP and EDBP. It should be noted that the N-filter spectra is different for each step. We used a pair of 61-tap R-filters after frequency offset compensation and their optimized configurations do not seem to exhibit any interpretable structure and vary across different channels in a random fashion. This should be expected as the R-filter is meant to mitigate any residual or unmodelled linear/nonlinear impairments in the link. The R-filter is important as all the \textit{Q}-factors in {\hyperref[ref-04]{Fig. 6}} (except those of GDBP) will be reduced by around 0.06 dB without the R-filter. This also illustrates the versatility of GDBP as it implicitly incorporates the R-filter’s functionalities and it becomes redundant when GDBP is used. The subsequent 32-tap MIMO filters track channel dynamics such as SOP rotation and/or PMD as described above followed by a 1-tap equalizer for estimating and compensating laser phase noise.</p>
+<div class="figure align-default" id="learnt-params">
+<a class="reference internal image-reference" href="notebooks/images/fig7.png"><img alt="notebooks/images/fig7.png" src="notebooks/images/fig7.png" style="height: 650px;" /></a>
+<p class="caption"><span class="caption-text">Learnt D-, N- and R-filter taps configuration for Channel 1 and 4 of a 7 x 288 Gb/s PM-16QAM system transmitted over 1125 km.</span><a class="headerlink" href="#learnt-params" title="Permalink to this image">¶</a></p>
+</div>
+<p>In addition to pushing the limits of long-haul transmission with GDBP, we also apply our combined training method in low computational complexity scenarios. We studied the case with \textasciitilde{}15% and \textasciitilde{}70% reduction in D-filter and N-filter lengths respectively and the transmission performance of channel 4 and learnt filter configurations are shown in {\hyperref[ref-06]{Fig. 8}}. Note that the R-filters are not shortened here as we want to ensure minimal residual distortions and optimize CDC, DBP, FDBP and EDBP performance for comparison with GDBP. It can be seen that in contrast to the previous study where the learnt N-filters plays a bigger role in performance improvements than the learnt D-filters, the learnt D-filters in this case account for the majority of the gain and significantly outperforms EDBP and other algorithms by around 1 dB. This serves as an experimental verification of previous simulation studies <span id="id34">[<a class="reference internal" href="#id43">HagerP20</a>]</span> suggesting that optimized D-filters can relax the requirement on its length.</p>
+<div class="figure align-default" id="q-vs-lp-fewer-taps">
+<a class="reference internal image-reference" href="notebooks/images/fig8.png"><img alt="notebooks/images/fig8.png" src="notebooks/images/fig8.png" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-text">(a) Q-factor vs. launched power using CD compensation (CDC) only, DBP, FDBP, EDBP and GDBP with reduced tap lengths for D-filter(221 taps) and N-filter(11 taps) for channel 4 of a 7 x 288 Gb/s PM-16QAM system transmitted over 1125 km; (b) Learnt D-and N-filter taps configuration.</span><a class="headerlink" href="#q-vs-lp-fewer-taps" title="Permalink to this image">¶</a></p>
+</div>
+<p>We further studied the effects of D-filter and N-filter lengths on \textit{Q}-factor and as shown in {\hyperref[ref-07]{Fig. 9}}, GDBP is notably robust to D-filter shortening while EDBP and FDBP performance drastically degrades. Meanwhile, N-filter shortening does not affect performance as much.</p>
+<div class="figure align-default" id="q-vs-taps">
+<a class="reference internal image-reference" href="notebooks/images/fig9.png"><img alt="notebooks/images/fig9.png" src="notebooks/images/fig9.png" style="height: 650px;" /></a>
+<p class="caption"><span class="caption-text">Q-factor vs. D-filter and N-filter length for channel 4 with 0 dBm launched power using FDBP, EDBP and GDBP for a 7 x 288 Gb/s PM- 16QAM system transmitted over 1125 km.</span><a class="headerlink" href="#q-vs-taps" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this paper, we showed how one can combine neural network and adaptive DSP training by transforming the adaptive DSP as an additional stateful NN layer appended to the main NN so that the overall signal processing block amends itself to standard ML training techniques such as backpropagation with efficient and practical learning methodologies. Under this framework, conventional filter tap updates correspond to NN state updates and we derived the full forward and backward pass co-gradients and update equations for all the parameters of the NN and adaptive filter taps. Implemented through the new flexible JAX framework, we conducted the first experimental demonstration of EDBP and GDBP over a 7 x 288 Gb/s PM-16QAM system transmitted over 1125 km. With the largest number of optimization variables for a given total number of steps, GDBP is the best single-channel DBP based-fiber nonlinearity compensation algorithm demonstrated in WDM experiments. In complexity-constrained scenarios, transmission performance of GDBP is not severely compromised while those of other fiber nonlinearity compensation algorithms degrade significantly. Extensions to the combined learning of other transmission impairments such as transceiver impairments, characterization of the framework’s ability in tracking polarization effects and mode-coupling dynamics in multi-mode systems will be areas of future research. Finally, the developed JAX-based framework COMMPLAX improves coding flexibility, efficiency and versatility for ML/DSP in optical communications. With the increasing popularity of JAX in various research areas, it is the hope that COMMPLAX can foster more interdisciplinary research between signal processing in optical communications and the wider ML/Computational Science and Engineering community.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id35"><dl class="citation">
+<dt class="label" id="id53"><span class="brackets">BFH+18</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id26">2</a>)</span></dt>
+<dd><p>James Bradbury, Roy Frostig, Peter Hawkins, Matthew James Johnson, Chris Leary, Dougal Maclaurin, George Necula, Adam Paszke, Jake VanderPlas, Skye Wanderman-Milne, and Qiao Zhang. JAX: composable transformations of Python+NumPy programs. 2018. URL: <a class="reference external" href="http://github.com/google/jax">http://github.com/google/jax</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id7">CFL+21</a></span></dt>
+<dd><p>S. Civelli, E. Forestieri, A. Lotsmanov, D. Razdoburdin, and M. Secondini. Coupled-channel enhanced ssfm for digital backpropagation in wdm systems. In <em>Optical Fiber Communication Conference (OFC) 2021</em>, M3H.7. Optical Society of America, 2021. URL: <a class="reference external" href="http://www.osapublishing.org/abstract.cfm?URI=OFC-2021-M3H.7">http://www.osapublishing.org/abstract.cfm?URI=OFC-2021-M3H.7</a>.</p>
+</dd>
+<dt class="label" id="id55"><span class="brackets">dJRGC15</span><span class="fn-backref">(<a href="#id17">1</a>,<a href="#id33">2</a>)</span></dt>
+<dd><p>Ivan Fernandez de Jauregui Ruiz, Amirhossein Ghazisaeidi, and Gabriel Charlet. Optimization rules and performance analysis of filtered digital backpropagation. In <em>2015 European Conference on Optical Communication (ECOC)</em>, 1–3. IEEE, 2015.</p>
+</dd>
+<dt class="label" id="id61"><span class="brackets"><a class="fn-backref" href="#id27">dee</a></span></dt>
+<dd><p>deepmind. Using jax to accelerate our research. URL: <a class="reference external" href="https://deepmind.com/blog/article/using-jax-to-accelerate-our-research">https://deepmind.com/blog/article/using-jax-to-accelerate-our-research</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id3">DL10</a></span></dt>
+<dd><p>Liang B Du and Arthur J Lowery. Improved single channel backpropagation for intra-channel fiber nonlinearity compensation in long-haul optical communication systems. <em>Optics express</em>, 18(16):17075–17088, 2010.</p>
+</dd>
+<dt class="label" id="id63"><span class="brackets"><a class="fn-backref" href="#id30">EBulowL17</a></span></dt>
+<dd><p>Tobias A Eriksson, Henning Bülow, and Andreas Leven. Applying neural networks in optical communication systems: possible pitfalls. <em>IEEE Photonics Technology Letters</em>, 29(23):2091–2094, 2017.</p>
+</dd>
+<dt class="label" id="id54"><span class="brackets">FLL21</span><span class="fn-backref">(<a href="#id16">1</a>,<a href="#id29">2</a>)</span></dt>
+<dd><p>Qirui Fan, Chao Lu, and Alan Pak Tao Lau. Commplax: differentiable DSP library for optical communication. 2021. URL: <a class="reference external" href="https://github.com/remifan/commplax">https://github.com/remifan/commplax</a>.</p>
+</dd>
+<dt class="label" id="id48"><span class="brackets">FZG+20</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id11">2</a>)</span></dt>
+<dd><p>Qirui Fan, Gai Zhou, Tao Gui, Chao Lu, and Alan Pak Tao Lau. Advancing theoretical understanding and practical performance of signal processing for nonlinear optical communications through machine learning. <em>Nature Communications</em>, 11(1):1–11, 2020.</p>
+</dd>
+<dt class="label" id="id56"><span class="brackets"><a class="fn-backref" href="#id18">FIS09</a></span></dt>
+<dd><p>Irshaad Fatadin, David Ives, and Seb J Savory. Blind equalization and carrier phase recovery in a 16-qam optical coherent system. <em>Journal of lightwave technology</em>, 27(15):3042–3049, 2009.</p>
+</dd>
+<dt class="label" id="id65"><span class="brackets"><a class="fn-backref" href="#id32">GKZ+12</a></span></dt>
+<dd><p>Ying Gao, Jian Hong Ke, Kang Ping Zhong, John C Cartledge, and Scott S-H Yam. Assessment of intrachannel nonlinear compensation for 112 gb/s dual-polarization 16qam systems. <em>Journal of lightwave technology</em>, 30(24):3902–3910, 2012.</p>
+</dd>
+<dt class="label" id="id49"><span class="brackets"><a class="fn-backref" href="#id13">GEB+20</a></span></dt>
+<dd><p>Amirhossein Ghazisaeidi, Marco Eppenberger, Benedikt Baeurle, Masafumi Ayata, Juerg Leuthold, and others. Deep learning based digital backpropagation demonstrating snr gain at low complexity in a 1200 km transmission link. <em>Optics Express</em>, 28(20):29318–29334, 2020.</p>
+</dd>
+<dt class="label" id="id47"><span class="brackets">HagerP18</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id11">2</a>)</span></dt>
+<dd><p>Christian Häger and Henry D Pfister. Nonlinear interference mitigation via deep neural networks. In <em>2018 Optical Fiber Communications Conference and Exposition (OFC)</em>, 1–3. IEEE, 2018.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets">HagerP20</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id34">2</a>)</span></dt>
+<dd><p>Christian Häger and Henry D Pfister. Physics-based deep learning for fiber-optic communication systems. <em>IEEE Journal on Selected Areas in Communications</em>, 39(1):280–294, 2020.</p>
+</dd>
+<dt class="label" id="id57"><span class="brackets">IN14</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id22">2</a>)</span></dt>
+<dd><p>Takashi Inoue and Shu Namiki. Carrier recovery for m-qam signals based on a block estimation process with kalman filter. <em>Optics express</em>, 22(13):15376–15387, 2014.</p>
+</dd>
+<dt class="label" id="id36"><span class="brackets"><a class="fn-backref" href="#id1">IK08</a></span></dt>
+<dd><p>Ezra Ip and Joseph M Kahn. Compensation of dispersion and nonlinear impairments using digital backpropagation. <em>Journal of Lightwave Technology</em>, 26(20):3416–3425, 2008.</p>
+</dd>
+<dt class="label" id="id59"><span class="brackets"><a class="fn-backref" href="#id24">KD09</a></span></dt>
+<dd><p>Ken Kreutz-Delgado. The complex gradient operator and the cr-calculus. <em>arXiv preprint arXiv:0906.4835</em>, 2009.</p>
+</dd>
+<dt class="label" id="id37"><span class="brackets"><a class="fn-backref" href="#id2">LR03</a></span></dt>
+<dd><p>Jochen Leibrich and Werner Rosenkranz. Efficient numerical simulation of multichannel wdm transmission systems limited by xpm. <em>IEEE Photonics Technology Letters</em>, 15(3):395–397, 2003.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets"><a class="fn-backref" href="#id8">LDH17</a></span></dt>
+<dd><p>Xiaojun Liang, John D Downie, and Jason E Hurley. Perturbation-assisted dbp for nonlinear compensation in polarization multiplexed systems. <em>IEEE Photonics Technology Letters</em>, 29(21):1812–1815, 2017.</p>
+</dd>
+<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id8">LK15</a></span></dt>
+<dd><p>Xiaojun Liang and Shiva Kumar. Correlated digital back propagation based on perturbation theory. <em>Optics express</em>, 23(11):14655–14665, 2015.</p>
+</dd>
+<dt class="label" id="id52"><span class="brackets"><a class="fn-backref" href="#id14">LBE15</a></span></dt>
+<dd><p>Zachary C Lipton, John Berkowitz, and Charles Elkan. A critical review of recurrent neural networks for sequence learning. <em>arXiv preprint arXiv:1506.00019</em>, 2015.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id2">MYL10</a></span></dt>
+<dd><p>Eduardo F Mateo, Fatih Yaman, and Guifang Li. Efficient compensation of inter-channel nonlinear effects via digital backward propagation in wdm optical transmission. <em>Optics Express</em>, 18(14):15144–15154, 2010.</p>
+</dd>
+<dt class="label" id="id60"><span class="brackets"><a class="fn-backref" href="#id25">MHL13</a></span></dt>
+<dd><p>Michael Mathieu, Mikael Henaff, and Yann LeCun. Fast training of convolutional networks through ffts. <em>arXiv preprint arXiv:1312.5851</em>, 2013.</p>
+</dd>
+<dt class="label" id="id58"><span class="brackets">MZK12</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id21">2</a>,<a href="#id23">3</a>)</span></dt>
+<dd><p>Yojiro Mori, Chao Zhang, and Kazuro Kikuchi. Novel configuration of finite-impulse-response filters tolerant to carrier-phase fluctuations in digital coherent optical receivers for higher-order quadrature amplitude modulation signals. <em>Optics express</em>, 20(24):26236–26251, 2012.</p>
+</dd>
+<dt class="label" id="id62"><span class="brackets"><a class="fn-backref" href="#id28">n2cholas</a></span></dt>
+<dd><p>n2cholas. N2cholas/awesome-jax: jax - a curated list of resources https://github.com/google/jax. URL: <a class="reference external" href="https://github.com/n2cholas/awesome-jax">https://github.com/n2cholas/awesome-jax</a>.</p>
+</dd>
+<dt class="label" id="id51"><span class="brackets"><a class="fn-backref" href="#id13">OGHager+20</a></span></dt>
+<dd><p>Vinícius Oliari, Sebastiaan Goossens, Christian Häger, Gabriele Liga, Rick M Bütler, Menno van den Hout, Sjoerd van der Heide, Henry D Pfister, Chigo Okonkwo, and Alex Alvarado. Revisiting efficient multi-step nonlinearity compensation with machine learning: an experimental demonstration. <em>Journal of Lightwave Technology</em>, 38(12):3114–3124, 2020.</p>
+</dd>
+<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id3">RMF+11</a></span></dt>
+<dd><p>Danish Rafique, Marco Mussolin, Marco Forzati, Jonas Mårtensson, Mohsan N Chugtai, and Andrew D Ellis. Compensation of intra-channel nonlinear fibre impairments using simplified digital back-propagation algorithm. <em>Optics express</em>, 19(10):9453–9460, 2011.</p>
+</dd>
+<dt class="label" id="id41"><span class="brackets">SMF14</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id12">2</a>)</span></dt>
+<dd><p>Marco Secondini, Domenico Marsella, and Enrico Forestieri. Enhanced split-step fourier method for digital backpropagation. In <em>2014 The European Conference on Optical Communication (ECOC)</em>, 1–3. IEEE, 2014.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets">SRM+16</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id6">2</a>,<a href="#id12">3</a>)</span></dt>
+<dd><p>Marco Secondini, Simon Rommel, Gianluca Meloni, Francesco Fresi, Enrico Forestieri, and Luca Poti. Single-step digital backpropagation for nonlinearity mitigation. <em>Photonic Network Communications</em>, 31(3):493–502, 2016.</p>
+</dd>
+<dt class="label" id="id50"><span class="brackets"><a class="fn-backref" href="#id11">SRS+21</a></span></dt>
+<dd><p>Oleg Sidelnikov, Alexey Redyuk, Stylianos Sygletos, Mikhail Fedoruk, and Sergei Turitsyn. Advanced convolutional neural networks for nonlinearity mitigation in long-haul wdm transmission systems. <em>Journal of Lightwave Technology</em>, 39(8):2397–2406, 2021.</p>
+</dd>
+<dt class="label" id="id64"><span class="brackets"><a class="fn-backref" href="#id31">SAL11</a></span></dt>
+<dd><p>Thomas Symul, SM Assad, and Ping K Lam. Real time demonstration of high bitrate quantum random number generation with coherent laser light. <em>Applied Physics Letters</em>, 98(23):231103, 2011.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "commplax"
+        },
+        kernelOptions: {
+            kernelName: "commplax",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'commplax'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
