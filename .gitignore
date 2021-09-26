@@ -1,7 +1,6 @@
 #
 local
 pretrained
-notebooks
 dataset
 *.zip
 *.ipynb

@@ -1,0 +1,3 @@
+cache_storage: /tmp/labptptm2
+remote: s3://optcommpubdataqrfan/labptptm2_zarr
+store: /mnt/data/remisdata/public_research_data/LabPtPTm2/data.zarr
