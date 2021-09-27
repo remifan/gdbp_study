@@ -45,7 +45,7 @@ You can:
 - drag to zoom in and double click to resume
 - move the cursor around to see the number indicators
 - single click on a legend item to hide that trace, double click to isolate other traces
-- see more options in the toolbar when showing hover cursor on the it
+- see more options in the image toolbar
 
 
 ```{code-cell} ipython3
