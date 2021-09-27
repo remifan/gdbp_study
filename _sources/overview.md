@@ -24,7 +24,7 @@ Here we have open-sourced the data we obtained from our experimental setup and y
 ## What's the problem with regular research papers presented in static pdfs? Why bother making a web-based interactive version?
 Desipte the time-tested robustness of PDF-based article, we have seen [opinions about this traditional media](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/), and we understand most of the complains:
 - much information is lost in the final results, which might lead to misinterpretion, and much time is wasted just to understand its content properly unless one is very familar with that topic.
-- to respect "[Code as a Research Object](https://www.researchobject.org/initiative/code-as-a-research-object/)" initiative, it'd great to see a direct computation-results reproduction within the article itself, obviously static papers just get in the way.
+- to respect "[Code as a Research Object](https://www.researchobject.org/initiative/code-as-a-research-object/)" initiative, it'd be great to see a direct dataz-computation-results reproduction within the article itself, obviously static papers just get in the way.
 - lack of continous revision (versioning) and citation including revison information.
 
 Some other disciplines, like math and physics have long tried to extended their papers to use other media to present the computation process, the so-called [notebook interface](https://en.wikipedia.org/wiki/Notebook_interface) is one of such alternatives which was invented and soon became the standard interface of Mathematica more than 30 years ago!
