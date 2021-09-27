@@ -24,7 +24,7 @@ In addition to the basic formating with classic PDF article, you can expect more
 - equations with LaTex source codes
 - continious improvements/revision of the content
 
-We have seen [critics about the traditional media of research article](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/), if research paper is seen as communication channel to transmit scientific information, we are trying our best to maximize its capacity in this material.
+We have seen [opinions about the traditional media of research article](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/), if research paper is seen as "communication channel" to transmit scientific information, we are trying our best to maximize its "capacity" in this material.
 
 ## Source codes
 ``````{margin}
