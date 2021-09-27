@@ -13,7 +13,6 @@ kernelspec:
 
 # What is web-based interactive research paper presentation?
 ```{only} html
-[![DOI](https://badgen.net/badge/DOI/10.1109%2FJLT.2021.3111437/blue)](https://ieeexplore.ieee.org/document/9534655)
 [![Jupyter Book Badge](images/jbook_badge.svg)](https://jupyterbook.org)
 ```
 
