@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Homepage
+title: null
 author: Qirui Fan, Chao Lu, Alan Pak Tao Lau
 # logo: logo.png
 
@@ -25,11 +25,21 @@ repository:
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
+# enable plotly
+sphinx:
+  extra_extensions:
+    - sphinx_comments
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
   use_issues_button: true
   use_repository_button: true
+  comments:
+    hypothesis: true
 
 # Launch button settings
 launch_buttons:
@@ -43,12 +53,6 @@ parse:
     - amsmath # allow latex math commands, e.g., \begin...
     - html_image
 
-# enable plotly
-sphinx:
-  config:
-    html_js_files:
-    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
-
 # cache the results of executing a notebook page
 execute:
   exclude_patterns:
@@ -58,3 +62,4 @@ execute:
 launch_buttons:
   binderhub_url: null  # exclude binder due to its insufficient RAM to run the examples
   colab_url: "https://colab.research.google.com"
+
