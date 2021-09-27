@@ -12,6 +12,10 @@ kernelspec:
 ---
 
 # what is web-based interactive research paper presentation
+```{only} html
+[![DOI](https://badgen.net/badge/DOI/10.1109%2FJLT.2021.3111437/blue)](https://ieeexplore.ieee.org/document/9534655)
+[![Jupyter Book Badge](images/jbook_badge.svg)](https://jupyterbook.org)
+```
 
 This is a extended web version of the [journal article](https://ieeexplore.ieee.org/abstract/document/9534655/?casa_token=k0nfUkc0KfsAAAAA:t6co-nT1B_q8jei3sQNvOprr33wIwCsCgkeh0GJMq9oSvv7s0NdV0HuYBVswxNnZVFnJOFAlTeU) titled *Combined neural network and adaptive DSP training for long-haul optical communications* published in *Journal of Lightwave Technology* with DOI:10.1109/JLT.2021.3111437
 
