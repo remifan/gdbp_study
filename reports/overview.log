@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/remi/Applications/miniconda3/envs/jbook/lib/python3.8/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import plotly.graph_objects as go
+
+# Create random data with numpy
+import numpy as np
+np.random.seed(1)
+
+N = 100
+random_x = np.linspace(0, 1, N)
+random_y0 = np.random.randn(N) + 5
+random_y1 = np.random.randn(N)
+random_y2 = np.random.randn(N) - 5
+
+fig = go.Figure()
+
+# Add traces
+fig.add_trace(go.Scatter(x=random_x, y=random_y0,
+                    mode='markers',
+                    name='markers'))
+fig.add_trace(go.Scatter(x=random_x, y=random_y1,
+                    mode='lines+markers',
+                    name='lines+markers'))
+fig.add_trace(go.Scatter(x=random_x, y=random_y2,
+                    mode='lines',
+                    name='lines'))
+figs.update_layout(margin=dict(l=10,r=10,b=10,t=10,pad=0))
+fig.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_924482/1393723040.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     23[0m                     [0mmode[0m[0;34m=[0m[0;34m'lines'[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     24[0m                     name='lines'))
+[0;32m---> 25[0;31m [0mfigs[0m[0;34m.[0m[0mupdate_layout[0m[0;34m([0m[0mmargin[0m[0;34m=[0m[0mdict[0m[0;34m([0m[0ml[0m[0;34m=[0m[0;36m10[0m[0;34m,[0m[0mr[0m[0;34m=[0m[0;36m10[0m[0;34m,[0m[0mb[0m[0;34m=[0m[0;36m10[0m[0;34m,[0m[0mt[0m[0;34m=[0m[0;36m10[0m[0;34m,[0m[0mpad[0m[0;34m=[0m[0;36m0[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     26[0m [0mfig[0m[0;34m.[0m[0mshow[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'figs' is not defined
+NameError: name 'figs' is not defined
+
