@@ -11,13 +11,32 @@ kernelspec:
   name: python3
 ---
 
-# what is web-based interactive research paper presentation
+# what is web-based interactive research paper presentation?
 ```{only} html
 [![DOI](https://badgen.net/badge/DOI/10.1109%2FJLT.2021.3111437/blue)](https://ieeexplore.ieee.org/document/9534655)
 [![Jupyter Book Badge](images/jbook_badge.svg)](https://jupyterbook.org)
 ```
 
-This is a extended web version of the [journal article](https://ieeexplore.ieee.org/abstract/document/9534655/?casa_token=k0nfUkc0KfsAAAAA:t6co-nT1B_q8jei3sQNvOprr33wIwCsCgkeh0GJMq9oSvv7s0NdV0HuYBVswxNnZVFnJOFAlTeU) titled *Combined neural network and adaptive DSP training for long-haul optical communications* published in *Journal of Lightwave Technology* with DOI:10.1109/JLT.2021.3111437
+This is a extended web version of the [journal article](https://ieeexplore.ieee.org/abstract/document/9534655/?casa_token=k0nfUkc0KfsAAAAA:t6co-nT1B_q8jei3sQNvOprr33wIwCsCgkeh0GJMq9oSvv7s0NdV0HuYBVswxNnZVFnJOFAlTeU) titled *Combined neural network and adaptive DSP training for long-haul optical communications* to be published in *Journal of Lightwave Technology* with DOI:10.1109/JLT.2021.3111437.
+
+Here we have open-sourced the data we obtained from our experimental setup and you can run all the (well-documented) codes to reproduce the results presented in the paper. You can also select and display different results and view it from different angles. 
+
+## What's the problem with regular research papers presented in static pdfs? Why bother making a web-based interactive version?
+Desipte the time-tested robustness of PDF-based article, we have seen [opinions about this traditional media](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/), and we understand most of the complains:
+- much information is lost in the final results, which might lead to misinterpretion, and much time is wasted just to understand its content properly unless one is very familar with that topic.
+- to respect "[Code as a Research Object](https://www.researchobject.org/initiative/code-as-a-research-object/)" initiative, it'd great to see a direct computation-results reproduction within the article itself, obviously static papers just get in the way.
+- lack of continous revision (versioning) and citation including revison information.
+
+Some other disciplines, like math and physics have long tried to extended their papers to use other media to present the computation process, the so-called [notebook interface](https://en.wikipedia.org/wiki/Notebook_interface) is one of such alternatives which was invented and soon became the standard interface of Mathematica more than 30 years ago!
+
+Not everyone has a copy of Mathematica but web-browser is universal. Web-based presentation was considered as a bad option for research content due to its blur image-based equations, informal typesetting, lack of cross-referencing and other basic formating functions. Over the past years, there are many open-sourced communities trying to make a difference from specific aspacts:
+- equations: [MathJax](https://www.mathjax.org/), [KaTex](https://katex.org/)
+- figure: [Plotly](https://plotly.com/python/), [Altair](https://altair-viz.github.io/), [Bokeh](https://bokeh.org/)
+- formating: [Sphinx](https://www.sphinx-doc.org/en/master/), [MyST](https://myst-parser.readthedocs.io/en/latest/index.html)
+
+You might never hear these names but they have been partially used in many different areas. In the recent [Jupyter Book](https://jupyterbook.org) projoct, they are all well interagted as part of Jupyter Book ecosystem which allow powerful presentation based on all of these enabling tools.
+
+While it is obvious that Optics and Photonics involve a lot more experimental work that are not meant to be 'reproducible' by someone else looking at the screen on the other side of the planet, open-sourcing the obtained data, enabling readers to understand their processing methodologies and try it themselves to improve reprodibility and readibility are becoming a required component when presenting one's work in all research disciplines. Therefore, it is important for us in Optics to also adopt this increasingly common trend in Science and Engineering research for the benefit of our own work and beyond. If research paper is seen as "communication channel" to transmit scientific information, we are trying our best to maximize its "capacity" in this material.
 
 In addition to the basic formating with classic PDF article, you can expect more features from this material:
 - with the source codes written as Jupyter notebooks, you can reproduce the results via cloud runtime (needs Colab access)
@@ -27,8 +46,6 @@ In addition to the basic formating with classic PDF article, you can expect more
 - better cross-references
 - equations with LaTex source codes
 - continious improvements/revision of the content
-
-We have seen [opinions about the traditional media of research article](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/), if research paper is seen as "communication channel" to transmit scientific information, we are trying our best to maximize its "capacity" in this material.
 
 ## Source codes
 ``````{margin}
