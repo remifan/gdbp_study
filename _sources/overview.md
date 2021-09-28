@@ -58,7 +58,7 @@ At source notebook page, you can execute the source codes directly in [Colab](ht
 ## Datasets
 The data access is part of the source codes, users don't have to download the dataset seperately.
 
-We have made efficient data APIs, please refer to the [dataset repo](https://github.com/remifan/LabPtPTm2) for more information and instructions.
+Such convenience is achieved by our efficient data APIs, please refer to the [dataset repo](https://github.com/remifan/LabPtPTm2) for more information.
 
 
 ## Figures
