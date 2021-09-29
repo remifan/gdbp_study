@@ -111,7 +111,7 @@ Equations rendering is done by [MathJax](https://www.mathjax.org/), which allows
 ## Feedbacks
 You are welcome to comment via:
 - selecting and annotating the contents (click the highlighted to reveal the existed comments). All the public annotations are visible by default, you may hide them by clicking <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class=""><g fill-rule="evenodd"><rect fill="none" stroke="none" x="0" y="0" width="16" height="16"></rect><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13c3.866 0 7-2.239 7-5s-3.134-5-7-5-7 2.239-7 5 3.134 5 7 5zm0-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path></g></svg> button at the top right of each page.
-You need a account of [Hyposhsis](https://web.hypothes.is/) to leave comments.
+You need a account from [Hyposhsis](https://web.hypothes.is/) to leave comments.
 - raising issue or commenting in the discussion panel in the Github repository (<i class="fab fa-github"></i> link at the top).
 
 ## Cite
