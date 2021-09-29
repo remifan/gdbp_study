@@ -54,6 +54,7 @@ Authors' remarks stay at this sidebar along with the table-of-content. We choose
 
 At source notebook page, you can execute the source codes directly in [Colab](https://research.google.com/colaboratory/) by hovering on <i class="fas fa-rocket"></i> at the top bar and choose `Colab`. You may also download the notebook by hovering on <i class="fas fa-download"></i> and click `.ipynb` so that you can run them locally.
 
+To improve readability, common codes are placed in the [gdbp package](https://github.com/remifan/gdbp_study), which are refered by the source notebooks. 
 
 ## Datasets
 The data access is part of the source codes, users don't have to download the dataset seperately.
