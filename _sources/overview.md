@@ -100,7 +100,7 @@ fig.add_trace(go.Scatter(x=random_x, y=random_y1,
 fig.add_trace(go.Scatter(x=random_x, y=random_y2,
                     mode='lines',
                     name='lines'))
-fig.update_layout(height=400, margin=dict(l=10,r=10,b=10,t=10,pad=0))
+fig.update_layout(height=400, margin=dict(l=10,r=10,b=10,t=30,pad=0))
 fig.show()
 ```
 
