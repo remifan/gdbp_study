@@ -38,7 +38,7 @@ While it is obvious that Optics and Photonics involve a lot more experimental wo
 
 In addition to the basic formating with classic PDF article, you can expect more features from this material:
 - with the source codes written as Jupyter notebooks, you can reproduce the results via cloud runtime (needs Colab access)
-- additional Authors' remarks are present along the main content 
+- additional Authors' remarks are present alongslide the main content 
 - in-page reader comments/responses
 - interactive figures
 - better cross-references
@@ -48,7 +48,7 @@ In addition to the basic formating with classic PDF article, you can expect more
 ## Source codes
 ``````{margin}
 ```{note}
-Authors' remarks stay at this sidebar along with the table-of-content. We choose washed font-color to minimize distracition.
+Authors' remarks stay at this sidebar alongslide with the table-of-content. We choose washed font-color to minimize distracition.
 ```
 ``````
 
