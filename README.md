@@ -38,14 +38,33 @@ The required package versions (pinned in commplax v0.1.1):
 | jaxlib  | 0.1.66  |
 | flax    | 0.3.4   |
 
-To install the correct version:
-```bash
-pip install git+https://github.com/remifan/commplax.git@v0.1.1
-```
-
 ## Installation
 
+Since the dependencies are outdated, we recommend using [Miniconda](https://docs.conda.io/en/latest/miniconda.html) to create an isolated environment.
+
+### 1. Create conda environment with Python 3.8
+
 ```bash
+conda create -n gdbp python=3.8 -y
+conda activate gdbp
+```
+
+### 2. Install JAX (CPU version)
+
+```bash
+pip install jax==0.2.13 jaxlib==0.1.66
+```
+
+> **GPU support:** The CUDA-enabled jaxlib 0.1.66 wheels are likely stale and may not work with modern CUDA drivers. If you need GPU acceleration, refer to the [JAX installation guide](https://github.com/google/jax#installation) for that era. The general pattern was:
+> ```bash
+> pip install jaxlib==0.1.66+cudaXXX -f https://storage.googleapis.com/jax-releases/jax_releases.html
+> ```
+> where `XXX` corresponds to your CUDA version (e.g., `cuda110` for CUDA 11.0).
+
+### 3. Install commplax v0.1.1 and gdbp_study
+
+```bash
+pip install git+https://github.com/remifan/commplax.git@v0.1.1
 git clone https://github.com/remifan/gdbp_study.git
 cd gdbp_study
 pip install -e .
