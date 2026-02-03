@@ -19,6 +19,13 @@ This project depends on [commplax](https://github.com/remifan/commplax), a JAX-b
 
 **Important:** This code is compatible with [commplax v0.1.1](https://github.com/remifan/commplax/tree/v0.1.1). Later versions of commplax have undergone significant changes and may not be compatible.
 
+The required package versions (pinned in commplax v0.1.1):
+| Package | Version |
+|---------|---------|
+| jax     | 0.2.13  |
+| jaxlib  | 0.1.66  |
+| flax    | 0.3.4   |
+
 To install the correct version:
 ```bash
 pip install git+https://github.com/remifan/commplax.git@v0.1.1
