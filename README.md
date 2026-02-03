@@ -16,6 +16,27 @@ This repository contains the source code and supplementary materials for the pap
 
 We propose a novel "stateful neural network" layer framework that integrates adaptive DSP algorithms with standard batch-based backpropagation training. This approach enables joint optimization of neural network parameters and adaptive filters for optical signal processing.
 
+The architecture is defined in a neural network-like fashion using composable layers:
+
+```python
+from commplax.module import core, layer
+
+model = layer.Serial(
+    layer.FDBP(steps=steps,
+               dtaps=dtaps,
+               ntaps=ntaps,
+               d_init=d_init,
+               n_init=n_init),
+    layer.BatchPowerNorm(mode=mode),
+    layer.MIMOFOEAf(name='FOEAf',
+                    w0=w0,
+                    train=mimo_train,
+                    preslicer=core.conv1d_slicer(rtaps),
+                    foekwargs={}),
+    layer.vmap(layer.Conv1d)(name='RConv', taps=rtaps),  # R-filter
+    layer.MIMOAF(train=mimo_train))  # adaptive MIMO equalizer
+```
+
 For a detailed walkthrough with reproducible results, see our [extended web article](https://remifan.github.io/gdbp_study/article.html).
 
 ## Dataset
