@@ -33,6 +33,7 @@ This project depends on [commplax](https://github.com/remifan/commplax), a JAX-b
 The required package versions (pinned in commplax v0.1.1):
 | Package | Version |
 |---------|---------|
+| Python  | 3.8     |
 | jax     | 0.2.13  |
 | jaxlib  | 0.1.66  |
 | flax    | 0.3.4   |
