@@ -18,6 +18,12 @@ We propose a novel "stateful neural network" layer framework that integrates ada
 
 For a detailed walkthrough with reproducible results, see our [extended web article](https://remifan.github.io/gdbp_study/article.html).
 
+## Dataset
+
+This study uses the [LabPtPTm2](https://github.com/remifan/LabPtPTm2) dataset: experimental data from 1125 km 7-channel DP-16QAM WDM transmission using quantum random number generated bit sequences. The dataset is hosted on AWS S3 with Python APIs for programmatic access.
+
+[![DOI](https://img.shields.io/badge/DOI-10.6084/m9.figshare.14843037-blue)](https://doi.org/10.6084/m9.figshare.14843037)
+
 ## Dependencies
 
 This project depends on [commplax](https://github.com/remifan/commplax), a JAX-based differentiable DSP library for optical communications.
