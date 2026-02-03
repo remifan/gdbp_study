@@ -9,6 +9,11 @@ This repository contains the source code and supplementary materials for the pap
 
 ## Overview
 
+<p align="center">
+  <img src="docs/images/fig2.svg" alt="GDBP Architecture" width="700">
+</p>
+<p align="center"><em>The NN GDBP and adaptive DSP structure: Conv1D (1-D convolution), BPN (batch power normalization), MIMO (multiple-input-multiple-output filters), FOE (frequency offset estimator).</em></p>
+
 We propose a novel "stateful neural network" layer framework that integrates adaptive DSP algorithms with standard batch-based backpropagation training. This approach enables joint optimization of neural network parameters and adaptive filters for optical signal processing.
 
 For a detailed walkthrough with reproducible results, see our [extended web article](https://remifan.github.io/gdbp_study/article.html).
